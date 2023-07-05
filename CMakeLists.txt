@@ -3,7 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("Piano")
+project (Piano)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -16,5 +16,5 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 # 包含子项目。
-add_subdirectory ("MusicPlayer")
-add_subdirectory ("ui")
+add_subdirectory (MusicPlayer)
+add_subdirectory (ui)
