@@ -19,10 +19,12 @@ class Player {
 public:
 
     explicit Player(Music::NoteLists notes);
+    explicit Player() = default;
     virtual ~Player();
 
     void SetRate(const float rate) { m_rate = rate; }
     virtual void Play();
+    virtual void Play(int pitch);
 
 protected:
 private:

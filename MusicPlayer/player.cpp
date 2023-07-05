@@ -12,8 +12,6 @@
 #include "player.h"
 
 #include <Windows.h>
-#include <iostream>
-
 #include <utility>
 
 Player::Player(Music::NoteLists notes) : m_notes(std::move(notes))
@@ -35,7 +33,6 @@ void Player::Play()
     int voice = 0x0;
     int volume = 0x7f;
     static int combo = Music::RATE::COMBO_NOTE_STOP;
-
     for (auto note : m_notes) {
         switch (note) {
             case Music::RATE::WHOLE_NOTE:
@@ -61,11 +58,22 @@ void Player::Play()
         voice = (volume << 16) + (note << 8) + 0x92;
         midiOutShortMsg(handle, voice);
         if (combo == Music::RATE::COMBO_NOTE_STOP) {
-//            std::cout << "combo: " << sleep << std::endl;
             Sleep(sleep);
         }
 
     }
 
+    midiOutClose(handle);
+}
+
+void Player::Play(int pitch)
+{
+    HMIDIOUT handle;
+    midiOutOpen(&handle, 0, 0, 0, CALLBACK_NULL);
+    midiOutShortMsg(handle, 34<<8 | 0xC0);
+    int volume = 0x7f;
+    int voice = (volume << 16) + (pitch << 8) + 0x92;
+    midiOutShortMsg(handle, voice);
+    Sleep(1000);
     midiOutClose(handle);
 }
