@@ -5,8 +5,8 @@
 
 #include <list>
 
-#include "music.h"
-#include "player.h"
+#include "../src/interface/music.h"
+#include "../src/interface/player.h"
 #include "RomanticPhone.h"
 
 int main()

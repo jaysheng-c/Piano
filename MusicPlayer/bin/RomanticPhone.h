@@ -14,7 +14,7 @@
 
 
 #include <list>
-#include "music.h"
+#include "../src/interface/music.h"
 
 Music::Tone g_phoneKey = Music::Tone::As;
 

@@ -1,0 +1,11 @@
+@PACKAGE_INT@
+set_and_check(MusicPlayer_DIR "@PACKAGE_INSTALL_BASE_DIR@")
+set_and_check(MusicPlayer_INCLUDE_DIR "@PACKAGE_INSTALL_INCLUDE_DIR@")
+set_and_check(MusicPlayer_LIBRARY_DIR "@PACKAGE_INSTALL_LIBRARY_DIR@")
+set_and_check(MusicPlayer_ARCHIVE_DIR "@PACKAGE_INSTALL_ARCHIVE_DIR@")
+set_and_check(MusicPlayer_OBJECT_DIR "@PACKAGE_INSTALL_OBJECT_DIR@")
+set_and_check(MusicPlayer_RUNTIME_DIR "@PACKAGE_INSTALL_RUNTIME_DIR@")
+set_and_check(MusicPlayer_CONFIG_DIR "@PACKAGE_INSTALL_CONFIG_DIR@")
+
+include(${CMAKE_CURRENT_LIST_DIR}/MusicPlayerTargets.cmake)
+cmake_required_components("@PROJECT_NAME@")

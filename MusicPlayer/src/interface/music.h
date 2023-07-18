@@ -12,8 +12,8 @@
 #ifndef MUSICPLAYER_MUSIC_H
 #define MUSICPLAYER_MUSIC_H
 
-#include <string>
-#include <list>
+#include "../../../../../../QtCreator/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string"
+#include "../../../../../../QtCreator/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list"
 
 class Music {
 public:

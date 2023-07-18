@@ -5,13 +5,15 @@ endif()
 include(CMakePrintHelpers)
 
 message("GTEST_ROOT: " ${GTEST_ROOT})
-message("CMAKE_CURRENT_SOURCE_DIR: " ..)
+message("GTEST_INCLUDE_DIR: " ${GTEST_INCLUDE_DIR})
 # cmake_print_component(GTESTSOURCE)
 
 find_package(GTest REQUIRED)
 
+include_directories(${GTEST_INCLUDE_DIR})
 
 function(link_gtest TARGET)
     target_link_directories(${TARGET} PUBLIC ${GTEST_INCLUDE_DIR})
     target_link_libraries(${TARGET} PRIVATE ${GTEST_LIBRARIES} pthread)
+#    target_link_libraries(${TARGET} PRIVATE ${GTEST_LIBRARIES} pthread build_prameter)
 endfunction()

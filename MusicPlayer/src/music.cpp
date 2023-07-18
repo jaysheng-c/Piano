@@ -9,7 +9,7 @@
   */
 //
 
-#include "music.h"
+#include "interface/music.h"
 
 std::string Music::ToString(Music::Pitch pitch)
 {

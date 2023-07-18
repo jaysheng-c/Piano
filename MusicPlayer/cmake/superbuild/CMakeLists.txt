@@ -1,0 +1,23 @@
+include(ExternalProject)
+include(CMakePrintHelpers)
+
+get_filename_component(PLATFORM_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+message("cmake/superbuild/CMakeLists.txt " ${CMAKE_INSTALL_PREFIX})
+message("cmake/superbuild/CMakeLists.txt " ${CMAKE_CURRENT_LIST_DIR})
+
+ExternalProject_Add(
+        MusicPlayer
+        SOURCE_DIR ${PLATFORM_SOURCE_DIR}
+        INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/MusicPlayer
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+        -DCMAKE_PREFIX_PATH:PATH=<INSTALL_DIR>
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}
+        -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+        -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+        -DCMAKE_VERBOSE_MAKEFILE=${CMAKE_VERBOSE_MAKEFILE}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM}
+        BUILD_ALWAYS TRUE
+        INSTALL_COMMAND ${CMAKE_MAKE_PROGRAM} install
+)

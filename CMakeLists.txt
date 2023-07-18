@@ -16,9 +16,6 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/output CACHE PATH "install path prefix" FORCE)
-set(ROOT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/output)
-set(INCLUDE_INSTALL_DIRECTORY ${ROOT_DIRECTORY}/include)
-set(LIBRARY_INSTALL_DIRECTORY ${ROOT_DIRECTORY}/lib)
 set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/output/gtest)
 
 
@@ -26,3 +23,4 @@ set(GTEST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/output/gtest)
 add_subdirectory(thirdparty/gtest)
 add_subdirectory(MusicPlayer)
 add_subdirectory(ui)
+add_subdirectory(MusicPlayer/cmake/superbuild)

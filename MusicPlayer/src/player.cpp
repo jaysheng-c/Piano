@@ -9,9 +9,9 @@
   */
 //
 
-#include "player.h"
+#include "interface/player.h"
 
-#include <Windows.h>
+#include <windows.h>
 #include <utility>
 
 Player::Player(Music::NoteLists notes) : m_notes(std::move(notes))
