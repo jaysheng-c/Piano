@@ -50,11 +50,6 @@ void Player::Play()
             default:
                 break;
         }
-//        if (note == Music::Pitch::Rest) {
-//            std::cout << "rest: " << sleep << std::endl;
-//            Sleep(sleep);
-//            continue;
-//        }
         voice = (volume << 16) + (note << 8) + 0x92;
         midiOutShortMsg(handle, voice);
         if (combo == Music::RATE::COMBO_NOTE_STOP) {

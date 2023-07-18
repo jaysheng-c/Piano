@@ -65,7 +65,7 @@ public:
     };
 
     static std::string ToString(Pitch pitch);
-    static Pitch FromString(const std::string &str);
+    static Pitch PitchFromString(const std::string &str);
 };
 
 class ScaleCalculation {

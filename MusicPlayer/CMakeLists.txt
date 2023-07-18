@@ -10,10 +10,15 @@ set(SOURCE
         )
 add_library(music SHARED)
 set_target_properties(music PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+target_sources(music PRIVATE ${SOURCE})
+target_link_libraries(music PRIVATE winmm)
 target_include_directories(music INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 target_compile_definitions(music PRIVATE JAYSHENG_LIBRARY)
+
+#message("1111111111" ${PROJECT_BINARY_DIR})
 
 add_executable (MusicPlayer ${SOURCE} MusicPlayer.cpp)
 target_link_libraries(MusicPlayer winmm)
 
-# TODO: 如有需要，请添加测试并安装目标。
+include(cmake/dependency/gtest.cmake)
+add_subdirectory(test)

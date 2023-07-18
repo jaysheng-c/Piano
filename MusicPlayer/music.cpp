@@ -35,7 +35,7 @@ std::string Music::ToString(Music::Pitch pitch)
     return "UNKNOW";
 }
 
-Music::Pitch Music::FromString(const std::string &str)
+Music::Pitch Music::PitchFromString(const std::string &str)
 {
 #define XX(pitch, v) \
     if(str == #v) { \
