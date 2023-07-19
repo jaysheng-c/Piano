@@ -11,6 +11,7 @@ set(SOURCE
         xml_writer.cpp
         xml_reader.cpp
         music.cpp
+        music_score.cpp
         player.cpp
         )
 

@@ -7,15 +7,16 @@ include_directories(
 )
 message("gtest {LIBXML2_ROOT} " ${LIBXML2_ROOT})
 
-set(LOG_TEST
+set(TEST
         ${MAIN}
         ${BASE_DIR}/src/music.cpp
         ${BASE_DIR}/src/xml_writer.cpp
         ${BASE_DIR}/src/xml_reader.cpp
+        ${BASE_DIR}/src/music_score.cpp
         )
 
 add_executable(MyTest test_gtest.cpp)
-target_sources(MyTest PRIVATE ${LOG_TEST})
+target_sources(MyTest PRIVATE ${TEST})
 #target_link_directories(MyTest INTERFACE $<BUILD_INTERFACE:${BASE_DIR}/src>)
 link_gtest(MyTest)
 link_libxml2(MyTest)

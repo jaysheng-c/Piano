@@ -80,3 +80,40 @@ std::string XmlReader::GetNodeContent(const xmlNodePtr node)
     return std::string((char*)(xmlContent));
 }
 
+xmlNodePtr XmlReader::FindNode(const std::string &xpath)
+{
+    auto result = GetNodeSet(xpath);
+    if (result == nullptr) {
+        return nullptr;
+    }
+    auto nodeSet = result->nodesetval;
+    auto node = nodeSet->nodeTab[0];
+    xmlXPathFreeObject(result);
+    return node;
+}
+
+xmlXPathObjectPtr XmlReader::GetNodeSet(const std::string &xpath)
+{
+    if (m_xmlDoc == nullptr) {
+        return nullptr;
+    }
+    xmlXPathContextPtr context;
+    xmlXPathObjectPtr result;
+    context = xmlXPathNewContext(m_xmlDoc);
+    if (context == nullptr) {
+        Error();
+        return nullptr;
+    }
+    result = xmlXPathEvalExpression(BAD_CAST(xpath.c_str()), context);
+    xmlXPathFreeContext(context);
+    if (result == nullptr) {
+        Error();
+        return nullptr;
+    }
+    if (xmlXPathNodeSetIsEmpty(result->nodesetval)) {
+        xmlXPathFreeObject(result);
+        printf("nodeset is empty\n");
+        return nullptr;
+    }
+    return result;
+}

@@ -5,44 +5,13 @@
 #include <fstream>
 
 #include "gtest/gtest.h"
-#include "../bin/RomanticPhone.h"
 #include "interface/xml_writer.h"
 #include "interface/xml_reader.h"
+#include "interface/music_score.h"
 
 TEST(GTest, hello)
 {
     printf("This is a gtest test.\n");
-}
-
-TEST(GTest, ToXml)
-{
-    printf("ToXml");
-    std::string fileName = "RomanticPhone.xml";
-    std::ofstream ofstream(fileName, std::ios::out);
-    ofstream << R"(<?xml version="1.0" encoding="utf-8" ?>)";
-    ofstream << "<music>";
-    ofstream << "<name>" << "浪漫手机" << "</name>";
-    ofstream << "<key>" << Music::Key::ToString(static_cast<int>(g_phoneKey)) << "</key>";
-    ofstream << "<rate>" << 96 << "</rate>";
-    ofstream << "<beats>";
-    for (auto& note : g_phoneHeader) {
-        ofstream << note.Serialize();
-    }
-    ofstream << "<note/>";
-    for (auto& note : g_phoneBodyHeader) {
-        ofstream << note.Serialize();
-    }
-    ofstream << "<note/>";
-    ofstream << "<repeat>";
-    for (auto& note : g_phoneBody) {
-        ofstream << note.Serialize();
-    }
-    ofstream << "</repeat>";
-    for (auto& note : g_phoneTail) {
-        ofstream << note.Serialize();
-    }
-    ofstream << "</beats>";
-    ofstream << "</music>";
 }
 
 TEST(GTest, XmlWriter)
@@ -90,4 +59,24 @@ TEST(GTest, XmlReader)
     std::string value = xmlReader.GetNodeProp(node, "rollcall");
     std::cout << node->name << " rollcall=" << value << std::endl;
     xmlReader.CloseXml();
+}
+
+TEST(GTest, XmlReaderXpath)
+{
+    printf("XmlReader.\n");
+    std::string fileName = "RomanticPhone2.xml";
+    std::string dir = "E:/IDE/_ProgramFile/QtProject/Piano/";
+    XmlReader xmlReader;
+    auto ret = xmlReader.OpenXmlDoc(dir + fileName);
+    ASSERT_TRUE(ret == 0) << ret;
+    auto node = xmlReader.FindNode("//name");
+    std::cout << xmlReader.GetNodeContent(node) << std::endl;
+}
+
+TEST(GTest, MusicScore)
+{
+    std::string fileName = "RomanticPhone2.xml";
+    std::string dir = "E:/IDE/_ProgramFile/QtProject/Piano/";
+    MusicScore musicScore(dir + fileName);
+    musicScore.Deserialize();
 }

@@ -15,6 +15,7 @@
 #include <string>
 
 #include "libxml/xmlreader.h"
+#include "libxml/xpath.h"
 
 class XmlReader {
 public:
@@ -26,6 +27,8 @@ public:
     xmlNodePtr GetXmlRoot();
     std::string GetNodeProp(const xmlNodePtr node, const std::string& name);
     std::string GetNodeContent(const xmlNodePtr node);
+    xmlNodePtr FindNode(const std::string& xpath);
+    xmlXPathObjectPtr GetNodeSet(const std::string &xpath);
 protected:
     int Error();
 private:

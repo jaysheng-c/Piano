@@ -16,13 +16,11 @@
 #include <list>
 #include <sstream>
 
-#include "serialize.h"
-
 class Music {
 public:
     using NoteLists = std::list<int>;
 
-    class Note : public SerializeWork {
+    class Note {
     public:
         int m_mainKey;
         int m_rollCall;
@@ -30,22 +28,6 @@ public:
         int m_octave;
         Note(int mainKey, int rollCall, int rate = MusicalNote::QUARTER_NOTE, int octave = 0) :
             m_mainKey(mainKey), m_rollCall(rollCall), m_rate(rate), m_octave(octave) {}
-        std::string Serialize() override {
-            std::stringstream str;
-            switch (m_rate) {
-                case MusicalNote::MUSICALNOTE::COMBO_NOTE_START:
-                    str << "<combo>";
-                    break;
-                case MusicalNote::MUSICALNOTE::COMBO_NOTE_STOP:
-                    str << "</combo>";
-                    break;
-                default:
-                    str << "<note rollcall=" << "\"" << RollCall::ToString(static_cast<int>(m_rollCall)) << "\" ";
-                    str << "octive=" << "\"" << m_octave << "\" ";
-                    str << "type=" << "\"" << MusicalNote::ToString(static_cast<int>(m_rate)) << "\"/>";
-            }
-            return str.str();
-        }
     };
 
     // 音名
@@ -77,19 +59,33 @@ public:
         static int FromString(const std::string &str);
     };
 
-
     // 音符
     class MusicalNote {
     public:
         enum MUSICALNOTE {
-            WHOLE_NOTE = 4000,          // 全音符
-            HALF_NOTE = 2000,           // 二分音符
-            QUARTER_NOTE = 1000,        // 四分音符
-            EIGHTH_NOTE = 500,          // 八分音符
-            SIXTEENTH_NOTE = 250,       // 十六分音符
-            THIRTY_SECOND_NOTE = 125,   // 三十二分音符
+            WHOLE_NOTE = 4000,                              // 全音符
+            HALF_NOTE = WHOLE_NOTE * 1 / 2,                 // 二分音符
+            QUARTER_NOTE = WHOLE_NOTE * 1 / 4,              // 四分音符
+            EIGHTH_NOTE = WHOLE_NOTE * 1 / 8,               // 八分音符
+            SIXTEENTH_NOTE = WHOLE_NOTE * 1 / 16,           // 十六分音符
+            THIRTY_SECOND_NOTE = WHOLE_NOTE * 1 / 32,       // 三十二分音符
+            POINT_WHOLE_NOTE = WHOLE_NOTE * 3 / 2,          // 付点全音符
+            POINT_HALF_NOTE = HALF_NOTE * 3 / 2,            // 付点二分音符
+            POINT_QUARTER_NOTE = QUARTER_NOTE * 3 / 2,      // 付点四分音符
+            POINT_EIGHTH_NOTE = EIGHTH_NOTE * 3 / 2,        // 付点八分音符
+            POINT_SIXTEENTH_NOTE = SIXTEENTH_NOTE * 3 / 2,  // 付点十六分音符
             COMBO_NOTE_START = -1,
             COMBO_NOTE_STOP = -2,
+        };
+        static std::string ToString(int note);
+        static int FromString(const std::string &str);
+    };
+
+    class NoteType {
+    public:
+        enum TYPE {
+            LIAISON,        // 连音
+            UN_LIAISON,     // 不连音
         };
         static std::string ToString(int note);
         static int FromString(const std::string &str);

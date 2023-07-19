@@ -109,9 +109,15 @@ std::string Music::MusicalNote::ToString(int note)
         XX(QUARTER_NOTE);
         XX(EIGHTH_NOTE);
         XX(SIXTEENTH_NOTE);
+        XX(POINT_WHOLE_NOTE);
+        XX(POINT_HALF_NOTE);
+        XX(POINT_QUARTER_NOTE);
+        XX(POINT_EIGHTH_NOTE);
+        XX(POINT_SIXTEENTH_NOTE);
         XX(THIRTY_SECOND_NOTE);
         XX(COMBO_NOTE_START);
         XX(COMBO_NOTE_STOP);
+
 #undef XX
         default:
             break;
@@ -131,11 +137,26 @@ int Music::MusicalNote::FromString(const std::string &str)
     XX(EIGHTH_NOTE,EIGHTH_NOTE);
     XX(SIXTEENTH_NOTE,SIXTEENTH_NOTE);
     XX(THIRTY_SECOND_NOTE,THIRTY_SECOND_NOTE);
+    XX(POINT_WHOLE_NOTE,POINT_WHOLE_NOTE);
+    XX(POINT_HALF_NOTE,POINT_HALF_NOTE);
+    XX(POINT_QUARTER_NOTE,POINT_QUARTER_NOTE);
+    XX(POINT_EIGHTH_NOTE,POINT_EIGHTH_NOTE);
+    XX(POINT_SIXTEENTH_NOTE,POINT_SIXTEENTH_NOTE);
     XX(COMBO_NOTE_START,COMBO_NOTE_START);
     XX(COMBO_NOTE_STOP,COMBO_NOTE_STOP);
 
     return MUSICALNOTE::COMBO_NOTE_STOP;
 #undef XX
+}
+
+std::string Music::NoteType::ToString(int note)
+{
+    return std::string();
+}
+
+int Music::NoteType::FromString(const std::string &str)
+{
+    return 0;
 }
 
 std::string Music::Key::ToString(int key)

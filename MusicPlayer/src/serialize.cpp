@@ -15,7 +15,7 @@ Serialize::Serialize(SerializeWork *work) : m_serialize(work)
 
 }
 
-std::string Serialize::StartSerialize()
+void Serialize::StartSerialize()
 {
-    return m_serialize->Serialize();
+    m_serialize->Serialize();
 }

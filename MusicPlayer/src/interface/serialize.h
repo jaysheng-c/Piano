@@ -19,7 +19,8 @@ public:
     explicit SerializeWork() = default;
     virtual ~SerializeWork() = default;
 
-    virtual std::string Serialize() = 0;
+    virtual void Serialize() = 0;
+    virtual void Deserialize() = 0;
 };
 
 class Serialize {
@@ -27,7 +28,7 @@ public:
     explicit Serialize(SerializeWork *work);
     virtual ~Serialize() = default;
 
-    std::string StartSerialize();
+    void StartSerialize();
 
 private:
     SerializeWork *m_serialize;
