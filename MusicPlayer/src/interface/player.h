@@ -14,12 +14,14 @@
 
 #include "music.h"
 #include <list>
+#include <windows.h>
+#include <utility>
 
 class Player {
 public:
 
     explicit Player(Music::NoteLists notes);
-    explicit Player() = default;
+    explicit Player();
     virtual ~Player();
 
     void SetRate(const float rate) { m_rate = rate; }
@@ -30,6 +32,7 @@ protected:
 private:
     Music::NoteLists m_notes;
     float m_rate = 1.4;
+    HMIDIOUT m_handle;
 };
 
 

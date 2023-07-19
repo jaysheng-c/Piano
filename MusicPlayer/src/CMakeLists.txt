@@ -2,13 +2,18 @@
 # 项目特定的逻辑。
 #
 cmake_minimum_required (VERSION 3.8)
+add_library(music SHARED)
+link_libxml2(music)
 
 # 将源代码添加到此项目的可执行文件。
 set(SOURCE
+        serialize.cpp
+        xml_writer.cpp
+        xml_reader.cpp
         music.cpp
         player.cpp
         )
-add_library(music SHARED)
+
 set_target_properties(music PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 target_sources(music PRIVATE ${SOURCE})
 target_link_libraries(music PRIVATE winmm)

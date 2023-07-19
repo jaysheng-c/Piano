@@ -23,6 +23,7 @@ set(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 include(${BASE_DIR}/cmake/build_prameter.cmake)
 include(cmake/dependency/gtest.cmake)
+include(cmake/dependency/libxml2.cmake)
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 include(CTest)

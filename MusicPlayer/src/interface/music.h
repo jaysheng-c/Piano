@@ -14,18 +14,38 @@
 
 #include <string>
 #include <list>
+#include <sstream>
+
+#include "serialize.h"
 
 class Music {
 public:
     using NoteLists = std::list<int>;
 
-    struct Note {
+    class Note : public SerializeWork {
+    public:
         int m_mainKey;
         int m_rollCall;
         int m_rate;
         int m_octave;
         Note(int mainKey, int rollCall, int rate = MusicalNote::QUARTER_NOTE, int octave = 0) :
             m_mainKey(mainKey), m_rollCall(rollCall), m_rate(rate), m_octave(octave) {}
+        std::string Serialize() override {
+            std::stringstream str;
+            switch (m_rate) {
+                case MusicalNote::MUSICALNOTE::COMBO_NOTE_START:
+                    str << "<combo>";
+                    break;
+                case MusicalNote::MUSICALNOTE::COMBO_NOTE_STOP:
+                    str << "</combo>";
+                    break;
+                default:
+                    str << "<note rollcall=" << "\"" << RollCall::ToString(static_cast<int>(m_rollCall)) << "\" ";
+                    str << "octive=" << "\"" << m_octave << "\" ";
+                    str << "type=" << "\"" << MusicalNote::ToString(static_cast<int>(m_rate)) << "\"/>";
+            }
+            return str.str();
+        }
     };
 
     // 音名
@@ -58,10 +78,10 @@ public:
     };
 
 
-    // 速率/音符
+    // 音符
     class MusicalNote {
     public:
-        enum MUSICALNOTE{
+        enum MUSICALNOTE {
             WHOLE_NOTE = 4000,          // 全音符
             HALF_NOTE = 2000,           // 二分音符
             QUARTER_NOTE = 1000,        // 四分音符
@@ -78,7 +98,7 @@ public:
     // 主key
     class Key {
     public:
-        enum KEY{
+        enum KEY {
             C = 0, Cs, D, Ds, E, F, Fs, G, Gs, A, As, B
         };
         static std::string ToString(int key);

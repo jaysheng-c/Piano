@@ -72,7 +72,8 @@ std::string Music::RollCall::ToString(int rollcall)
         return #name; \
         break;
 
-        XX(DO);XX(DOs);XX(RE);XX(REs);XX(MI);XX(FA);XX(FAs);XX(SOL);XX(SOLs);XX(LA);XX(LAs);XX(XI);
+        XX(DO);XX(DOs);XX(RE);XX(REs);XX(MI);XX(FA);
+        XX(FAs);XX(SOL);XX(SOLs);XX(LA);XX(LAs);XX(XI);
         XX(STOP);
 #undef XX
         default:
