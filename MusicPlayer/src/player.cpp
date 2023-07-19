@@ -29,22 +29,22 @@ void Player::Play()
     midiOutOpen(&handle, 0, 0, 0, CALLBACK_NULL);
     midiOutShortMsg(handle, 34<<8 | 0xC0);
 
-    int sleep = Music::RATE::QUARTER_NOTE;
+    int sleep = Music::MusicalNote::MUSICALNOTE::QUARTER_NOTE;
     int voice = 0x0;
     int volume = 0x7f;
-    static int combo = Music::RATE::COMBO_NOTE_STOP;
+    static int combo = Music::MusicalNote::MUSICALNOTE::COMBO_NOTE_STOP;
     for (auto note : m_notes) {
         switch (note) {
-            case Music::RATE::WHOLE_NOTE:
-            case Music::RATE::HALF_NOTE:
-            case Music::RATE::QUARTER_NOTE:
-            case Music::RATE::EIGHTH_NOTE:
-            case Music::RATE::SIXTEENTH_NOTE:
-            case Music::RATE::THIRTY_SECOND_NOTE:
+            case Music::MusicalNote::MUSICALNOTE::WHOLE_NOTE:
+            case Music::MusicalNote::MUSICALNOTE::HALF_NOTE:
+            case Music::MusicalNote::MUSICALNOTE::QUARTER_NOTE:
+            case Music::MusicalNote::MUSICALNOTE::EIGHTH_NOTE:
+            case Music::MusicalNote::MUSICALNOTE::SIXTEENTH_NOTE:
+            case Music::MusicalNote::MUSICALNOTE::THIRTY_SECOND_NOTE:
                 sleep = static_cast<float>(note) / m_rate;
                 continue;
-            case Music::RATE::COMBO_NOTE_START:
-            case Music::RATE::COMBO_NOTE_STOP:
+            case Music::MusicalNote::MUSICALNOTE::COMBO_NOTE_START:
+            case Music::MusicalNote::MUSICALNOTE::COMBO_NOTE_STOP:
                 combo = note;
                 continue;
             default:
@@ -52,7 +52,7 @@ void Player::Play()
         }
         voice = (volume << 16) + (note << 8) + 0x92;
         midiOutShortMsg(handle, voice);
-        if (combo == Music::RATE::COMBO_NOTE_STOP) {
+        if (combo == Music::MusicalNote::MUSICALNOTE::COMBO_NOTE_STOP) {
             Sleep(sleep);
         }
 

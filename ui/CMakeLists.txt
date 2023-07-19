@@ -1,16 +1,16 @@
 #add_subdirectory(item)
 
-set(SOURCE
-        ${CMAKE_CURRENT_SOURCE_DIR}/../MusicPlayer/music.cpp
 
+add_executable(Piano)
+
+set(SOURCE
         ${CMAKE_CURRENT_SOURCE_DIR}/item/pianokey.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/item/keyboardGroup.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/piano.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/piano.ui
         )
-
-add_executable(Piano ${SOURCE} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-target_link_libraries(Piano PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_sources(Piano PRIVATE ${SOURCE} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+target_link_libraries(Piano PRIVATE Qt${QT_VERSION_MAJOR}::Widgets music)
 target_include_directories(Piano PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/item>)
 target_include_directories(Piano PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 target_include_directories(Piano PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../MusicPlayer>)

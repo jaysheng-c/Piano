@@ -16,7 +16,9 @@
 
 #include <QDebug>
 
-#include "music.h"
+#include "src/interface/music.h"
+#include "src/interface/player.h"
+#include "bin/RomanticPhone.h"
 
 KeyBoardGroup::KeyBoardGroup(QWidget *parent) :
         QWidget(parent), ui(new Ui::KeyBoardGroup)
@@ -38,7 +40,7 @@ void KeyBoardGroup::InitKeyBoard()
     QSize blackKeySize(14, 45);
 
     // 初始化左侧按键
-    QString name = QString::fromStdString(Music::ToString(Music::Pitch::A0));
+    QString name = QString::fromStdString(Music::Pitch::ToString(Music::Pitch::A0));
     auto keyBoard = new PianoKey(name, Music::Pitch::A0, static_cast<QWidget *>(this));
     keyBoard->setFixedSize(whiteKeySize);
     keyBoard->lower();
@@ -51,7 +53,7 @@ void KeyBoardGroup::InitKeyBoard()
     point.setX(point.x() + whiteKeySize.width());
     m_keys.insert(name, keyBoard);
 
-    name = QString::fromStdString(Music::ToString(Music::Pitch::A0s));
+    name = QString::fromStdString(Music::Pitch::ToString(Music::Pitch::A0s));
     keyBoard = new PianoKey(name, Music::Pitch::A0s, static_cast<QWidget *>(this), PianoKey::TYPE::BLACK);
     keyBoard->raise();
     keyBoard->setFixedSize(blackKeySize);
@@ -63,7 +65,7 @@ void KeyBoardGroup::InitKeyBoard()
     keyBoard->move(point.x() - blackKeySize.width() / 2, point.y());
     m_keys.insert(name, keyBoard);
 
-    name = QString::fromStdString(Music::ToString(Music::Pitch::B0));
+    name = QString::fromStdString(Music::Pitch::ToString(Music::Pitch::B0));
     keyBoard = new PianoKey(name, Music::Pitch::B0, static_cast<QWidget *>(this));
     keyBoard->setFixedSize(whiteKeySize);
     keyBoard->lower();
@@ -84,7 +86,7 @@ void KeyBoardGroup::InitKeyBoard()
     }
 
     // 初始化右侧按键
-    name = QString::fromStdString(Music::ToString(Music::Pitch::C8));
+    name = QString::fromStdString(Music::Pitch::ToString(Music::Pitch::C8));
     keyBoard = new PianoKey(name, Music::Pitch::C8, static_cast<QWidget *>(this));
     keyBoard->setFixedSize(whiteKeySize);
     keyBoard->lower();
@@ -110,7 +112,7 @@ QPoint KeyBoardGroup::InitGroupKey(const QPoint &point, int index)
     constexpr int COUNT = 12;
     for (int i = 0; i < COUNT; ++i) {
         int basePitch = Music::Pitch::C1 + i;
-        QString name = QString::fromStdString(Music::ToString(static_cast<Music::Pitch>(basePitch + COUNT * (index - 1))));
+        QString name = QString::fromStdString(Music::Pitch::ToString(static_cast<Music::Pitch::PITCH>(basePitch + COUNT * (index - 1))));
         auto keyBoard = new PianoKey(name, basePitch + COUNT * (index - 1), static_cast<QWidget *>(this));
         (void) connect(keyBoard, &PianoKey::keyName, this, &KeyBoardGroup::SlotSendName);
         (void) connect(keyBoard, &PianoKey::keyClick, this, &KeyBoardGroup::SlotKeyBoardPress);
@@ -154,5 +156,6 @@ void KeyBoardGroup::SlotSendName(QString name)
 
 void KeyBoardGroup::SlotKeyBoardPress(int pitch)
 {
-    qDebug() << __FUNCTION__ << pitch;
+    qDebug() << __FUNCTION__ << pitch << Music::Pitch::ToString(Music::Pitch::PITCH(pitch));
+    // TODO: 需要单独开一个线程去跑
 }

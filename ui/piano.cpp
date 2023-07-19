@@ -42,12 +42,30 @@ void Piano::InitKeyBoard()
 
     QSize keySize(20, 90);
 
-    this->setFixedWidth(WHITE_KEY_COUNT * keySize.width());
-    m_keyBoard = new KeyBoardGroup(static_cast<QWidget*>(this));
-    m_keyBoard->setStyleSheet("border: 1px solid;"
-                              "border-color: black;");
+    ui->selectItemWidget->setStyleSheet("border: 1px solid;"
+                                        "border-color: black;"
+                                        "background-color: red;");
+    ui->selectItemWidget->setFixedWidth(WHITE_KEY_COUNT * keySize.width());
 
-    m_keyBoard->move(0,0);
+    this->setFixedWidth(WHITE_KEY_COUNT * keySize.width());
+    ui->keyBoardWidget->setStyleSheet("border: 1px solid;"
+                              "border-color: black;");
+    ui->keyBoardWidget->setFixedWidth(WHITE_KEY_COUNT * keySize.width());
+}
+
+void Piano::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+        case Qt::Key::Key_Escape:
+            break;
+        case Qt::Key::Key_A:
+            break;
+        default:
+            break;
+
+    }
+    //
+    QWidget::keyPressEvent(event);
 }
 
 void Piano::slotKeyBoardPress(int pitch)

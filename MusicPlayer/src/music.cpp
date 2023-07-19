@@ -11,11 +11,11 @@
 
 #include "interface/music.h"
 
-std::string Music::ToString(Music::Pitch pitch)
+std::string Music::Pitch::ToString(int pitch)
 {
     switch(pitch) {
 #define XX(name) \
-    case Pitch::name: \
+    case PITCH::name: \
         return #name; \
         break;
 
@@ -35,11 +35,11 @@ std::string Music::ToString(Music::Pitch pitch)
     return "UNKNOW";
 }
 
-Music::Pitch Music::PitchFromString(const std::string &str)
+int Music::Pitch::FromString(const std::string &str)
 {
 #define XX(pitch, v) \
     if(str == #v) { \
-        return Pitch::pitch; \
+        return PITCH::pitch; \
     }
     XX(A0,A0);XX(A0s,A0s);XX(B0,B0);
     XX(C1,C1);XX(C1s,C1s);XX(D1,D1);XX(D1s,D1s);XX(E1,E1);XX(F1,F1);XX(F1s,F1s);XX(G1,G1);XX(G1s,G1s);XX(A1,A1);XX(A1s,A1s);XX(B1,B1);
@@ -60,32 +60,156 @@ Music::Pitch Music::PitchFromString(const std::string &str)
     XX(C6,c6);XX(C6s,c6s);XX(D6,d6);XX(D6s,d6s);XX(E6,e6);XX(F6,f6);XX(F6s,f6s);XX(G6,g6);XX(G6s,g6s);XX(A6,a6);XX(A6s,a6s);XX(B6,b6);
     XX(C7,c7);XX(C7s,c7s);XX(D7,d7);XX(D7s,d7s);XX(E7,e7);XX(F7,f7);XX(F7s,f7s);XX(G7,g7);XX(G7s,g7s);XX(A7,a7);XX(A7s,a7s);XX(B7,b7);
     XX(C8,c8);
-    return Pitch::Rest;
+    return PITCH::Rest;
 #undef XX
 }
 
-ScaleCalculation::ScaleCalculation(Music::Tone tone) : m_mainKey(tone), m_octaveKey(12)
+std::string Music::RollCall::ToString(int rollcall)
+{
+    switch(rollcall) {
+#define XX(name) \
+    case ROLLCALL::name: \
+        return #name; \
+        break;
+
+        XX(DO);XX(DOs);XX(RE);XX(REs);XX(MI);XX(FA);XX(FAs);XX(SOL);XX(SOLs);XX(LA);XX(LAs);XX(XI);
+        XX(STOP);
+#undef XX
+        default:
+            break;
+    }
+    return "UNKNOW";
+}
+
+int Music::RollCall::FromString(const std::string &str)
+{
+#define XX(sollcall, v) \
+    if(str == #v) { \
+        return ROLLCALL::sollcall; \
+    }
+    XX(DO,DO);XX(DOs,DOs);XX(RE,RE);XX(REs,REs);XX(MI,MI);XX(FA,FA);
+    XX(FAs,FAs);XX(SOL,SOL);XX(SOLs,SOLs);XX(LA,LA);XX(LAs,LAs);XX(XI,XI);
+    XX(STOP,STOP);
+
+    return ROLLCALL::STOP;
+#undef XX
+}
+
+std::string Music::MusicalNote::ToString(int note)
+{
+    switch(note) {
+#define XX(name) \
+    case MUSICALNOTE::name: \
+        return #name; \
+        break;
+
+        XX(WHOLE_NOTE);
+        XX(HALF_NOTE);
+        XX(QUARTER_NOTE);
+        XX(EIGHTH_NOTE);
+        XX(SIXTEENTH_NOTE);
+        XX(THIRTY_SECOND_NOTE);
+        XX(COMBO_NOTE_START);
+        XX(COMBO_NOTE_STOP);
+#undef XX
+        default:
+            break;
+    }
+    return "UNKNOW";
+}
+
+int Music::MusicalNote::FromString(const std::string &str)
+{
+#define XX(note, v) \
+    if(str == #v) { \
+        return MUSICALNOTE::note; \
+    }
+    XX(WHOLE_NOTE,WHOLE_NOTE);
+    XX(HALF_NOTE,HALF_NOTE);
+    XX(QUARTER_NOTE,QUARTER_NOTE);
+    XX(EIGHTH_NOTE,EIGHTH_NOTE);
+    XX(SIXTEENTH_NOTE,SIXTEENTH_NOTE);
+    XX(THIRTY_SECOND_NOTE,THIRTY_SECOND_NOTE);
+    XX(COMBO_NOTE_START,COMBO_NOTE_START);
+    XX(COMBO_NOTE_STOP,COMBO_NOTE_STOP);
+
+    return MUSICALNOTE::COMBO_NOTE_STOP;
+#undef XX
+}
+
+std::string Music::Key::ToString(int key)
+{
+    switch(key) {
+#define XX(name) \
+    case KEY::name: \
+        return #name; \
+        break;
+
+        XX(C);
+        XX(Cs);
+        XX(D);
+        XX(Ds);
+        XX(E);
+        XX(F);
+        XX(Fs);
+        XX(G);
+        XX(Gs);
+        XX(A);
+        XX(As);
+        XX(B);
+#undef XX
+        default:
+            break;
+    }
+    return "UNKNOW";
+}
+
+int Music::Key::FromString(const std::string &str)
+{
+#define XX(key, v) \
+    if(str == #v) { \
+        return KEY::key; \
+    }
+    XX(C,C);
+    XX(Cs,Cs);
+    XX(D,D);
+    XX(Ds,Ds);
+    XX(E,E);
+    XX(F,F);
+    XX(Fs,Fs);
+    XX(G,G);
+    XX(Gs,Gs);
+    XX(A,A);
+    XX(As,As);
+    XX(B,B);
+
+    return KEY::C;
+#undef XX
+}
+
+
+ScaleCalculation::ScaleCalculation(Music::Key::KEY tone) : m_mainKey(tone), m_octaveKey(12)
 {
 
 }
 
-Music::Pitch ScaleCalculation::FromRollCall(Music::RollCall rollCall, int Octave)
+Music::Pitch::PITCH ScaleCalculation::FromRollCall(Music::RollCall::ROLLCALL rollCall, int Octave)
 {
     if (rollCall == Music::RollCall::STOP) {
         return Music::Pitch::Rest;
     }
     int mainCKey = static_cast<int>(Music::Pitch::C4) + static_cast<int>(m_mainKey);
-    auto pitch = static_cast<Music::Pitch>(mainCKey + rollCall + Octave * m_octaveKey);
+    auto pitch = static_cast<Music::Pitch::PITCH>(mainCKey + rollCall + Octave * m_octaveKey);
     if (pitch < Music::Pitch::A0 || pitch > Music::Pitch::C8) {
         m_err = std::string("out of range. range:[A0,C8]");
     }
     return pitch;
 }
 
-Music::Pitch ScaleCalculation::FromRollCall(const Music::Note &note)
+Music::Pitch::PITCH ScaleCalculation::FromRollCall(const Music::Note &note)
 {
-    SetMainKey(static_cast<Music::Tone>(note.m_mainKey));
-    return FromRollCall(static_cast<Music::RollCall>(note.m_rollCall), note.m_octave);
+    SetMainKey(static_cast<Music::Key::KEY>(note.m_mainKey));
+    return FromRollCall(static_cast<Music::RollCall::ROLLCALL>(note.m_rollCall), note.m_octave);
 }
 
 std::string ScaleCalculation::Error()
@@ -97,15 +221,15 @@ std::string ScaleCalculation::Error()
 
 void ScaleCalculation::UpateKey(int key)
 {
-    m_mainKey = static_cast<Music::Tone>(m_mainKey + key);
+    m_mainKey = static_cast<Music::Key::KEY>(m_mainKey + key);
 }
 
 void ScaleCalculation::DownKey(int key)
 {
-    m_mainKey = static_cast<Music::Tone>(m_mainKey - key);
+    m_mainKey = static_cast<Music::Key::KEY>(m_mainKey - key);
 }
 
-void ScaleCalculation::SetMainKey(Music::Tone tone)
+void ScaleCalculation::SetMainKey(Music::Key::KEY tone)
 {
     if (tone != m_mainKey) {
         m_mainKey = tone;

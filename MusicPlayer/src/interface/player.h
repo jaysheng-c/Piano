@@ -13,7 +13,7 @@
 #define MUSICPLAYER_PLAYER_H
 
 #include "music.h"
-#include "../../../../../../QtCreator/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list"
+#include <list>
 
 class Player {
 public:

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>602</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -20,12 +20,55 @@
    <string>Piano</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">.QFrame {
-border: 1px solid;
-border-color: black;
-}</string>
+   <string notr="true"/>
   </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>602</width>
+     <height>402</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetFixedSize</enum>
+    </property>
+    <item>
+     <widget class="QWidget" name="selectItemWidget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>600</width>
+        <height>200</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="KeyBoardGroup" name="keyBoardWidget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>600</width>
+        <height>200</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KeyBoardGroup</class>
+   <extends>QWidget</extends>
+   <header>item/keyboardgroup.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

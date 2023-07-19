@@ -30,15 +30,17 @@ public:
     ~Piano() override;
 
     void InitKeyBoard();
-
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 
 private:
     Ui::Piano *ui;
-    KeyBoardGroup *m_keyBoard;
+//    KeyBoardGroup *m_keyBoard;
 
 public slots:
     void slotKeyBoardPress(int pitch);
 };
+
 
 
 #endif //PIANO_PIANO_H
