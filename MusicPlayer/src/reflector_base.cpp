@@ -24,7 +24,7 @@ Reflector::~Reflector()
 void Reflector::Register(const std::string &name, ObjectFactory *obj)
 {
     auto it = m_objectFactories.find(name);
-    if (it != m_objectFactories.end()) {
+    if (it == m_objectFactories.end()) {
         m_objectFactories[name] = obj;
     } else {
         std::cout << "class [" << name << "] is exits!" << std::endl;
