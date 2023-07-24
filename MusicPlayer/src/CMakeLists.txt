@@ -7,6 +7,7 @@ link_libxml2(music)
 
 # 将源代码添加到此项目的可执行文件。
 set(SOURCE
+        reflector_base.cpp
         serialize.cpp
         xml_writer.cpp
         xml_reader.cpp
@@ -18,6 +19,7 @@ set(SOURCE
 set_target_properties(music PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 target_sources(music PRIVATE ${SOURCE})
 target_link_libraries(music PRIVATE winmm)
-target_include_directories(music INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_include_directories(music INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:include>)
 target_compile_definitions(music PRIVATE JAYSHENG_LIBRARY)
 
