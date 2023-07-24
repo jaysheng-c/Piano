@@ -36,31 +36,41 @@ private:
     int m_type;         // 类型（如：连音）
 };
 
-class Clap : public ReflectorObject {
+class Combo : public ReflectorObject {
 public:
     using Notes = std::vector<Note*>;
 
-    ~Clap() override;
-    inline size_t LeftNoteSize() const { return m_leftNotes.size(); }
-    inline size_t RightNoteSize() const { return m_rightNotes.size(); }
-    inline Note *LeftNote(int index) const {
-        if (index > LeftNoteSize()) {
+    ~Combo() override;
+    inline size_t NotesSize() const { return m_notes.size(); }
+    inline Note *GetNote(int index) {
+        if (index > NotesSize()) {
             return nullptr;
         }
-        return m_leftNotes[index];
+        return m_notes[index];
     }
-    inline Note *RightNote(int index) const {
-        if (index > RightNoteSize()) {
-            return nullptr;
-        }
-        return m_rightNotes[index];
-    }
-
-    inline void SetLeftNote(Note *note) { m_leftNotes.emplace_back(note); }
-    inline void SetRightNote(Note *note) { m_rightNotes.emplace_back(note); }
+    inline void SetNote(Note *note) { m_notes.emplace_back(note); }
 private:
-    Notes m_leftNotes;    // 左手音符
-    Notes m_rightNotes;   // 右手音符
+    Notes m_notes;
+};
+
+class Clap : public ReflectorObject {
+public:
+//    using Notes = std::vector<Note*>;
+    using Combos = std::vector<Combo*>;
+
+    ~Clap() override;
+    inline size_t ComboSize() const { return m_combos.size(); }
+    inline Combo *GetCombo(int index) const {
+        if (index > ComboSize()) {
+            return nullptr;
+        }
+        return m_combos[index];
+    }
+    inline void SetCombo(Combo *combo) { m_combos.emplace_back(combo); }
+private:
+//    Notes m_leftNotes;    // 左手音符
+//    Notes m_rightNotes;   // 右手音符
+    Combos m_combos;
 };
 
 class Sub : public ReflectorObject {
@@ -126,6 +136,7 @@ protected:
     int PaserMusicScore();
     Sub *PaserSub(xmlNodePtr subNode);
     Clap *PaserClap(xmlNodePtr clapNode);
+    Combo *PaserCombo(xmlNodePtr comboNode);
     Note *PaserNote(xmlNodePtr noteNode);
 
 private:

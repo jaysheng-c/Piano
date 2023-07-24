@@ -44,7 +44,7 @@ void Player::Play()
             case Music::MusicalNote::MUSICALNOTE::EIGHTH_NOTE:
             case Music::MusicalNote::MUSICALNOTE::SIXTEENTH_NOTE:
             case Music::MusicalNote::MUSICALNOTE::THIRTY_SECOND_NOTE:
-                sleep = static_cast<float>(note) / m_rate;
+                sleep = static_cast<int>(static_cast<float>(note) / m_rate);
                 continue;
             case Music::MusicalNote::MUSICALNOTE::COMBO_NOTE_START:
             case Music::MusicalNote::MUSICALNOTE::COMBO_NOTE_STOP:

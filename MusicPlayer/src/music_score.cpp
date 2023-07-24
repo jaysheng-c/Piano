@@ -15,20 +15,25 @@
 #include "interface/music.h"
 
 REFLECT(Note)
+REFLECT(Combo)
 REFLECT(Clap)
 REFLECT(Sub)
 REFLECT(MusicScore)
 
+Combo::~Combo()
+{
+    for (auto& m_objectFactorie : m_notes) {
+        delete m_objectFactorie;
+    }
+    m_notes.clear();
+}
+
 Clap::~Clap()
 {
-    for (auto& m_objectFactorie : m_leftNotes) {
+    for (auto& m_objectFactorie : m_combos) {
         delete m_objectFactorie;
     }
-    for (auto& m_objectFactorie : m_rightNotes) {
-        delete m_objectFactorie;
-    }
-    m_leftNotes.clear();
-    m_rightNotes.clear();
+    m_combos.clear();
 }
 
 Sub::~Sub()
@@ -62,7 +67,7 @@ int MusicScoreManager::PaserMusicScore()
     m_errCode = 0;
     m_musicScore = GetNewInstance<MusicScore>("MusicScore");
     if (m_musicScore == nullptr) {
-        std::cerr << "can not get class[MusicScore]" << std::endl;
+        std::cerr << "PaserMusicScore can not get class[MusicScore]" << std::endl;
         return -1;
     }
 
@@ -99,9 +104,9 @@ int MusicScoreManager::PaserMusicScore()
 
 Sub *MusicScoreManager::PaserSub(xmlNodePtr subNode)
 {
-    auto sub = GetNewInstance<Sub>(std::string((char*)subNode->name));
+    auto sub = GetNewInstance<Sub>(std::string(reinterpret_cast<const char*>(subNode->name)));
     if (sub == nullptr) {
-        std::cerr << "can not get class[" << subNode->name << "]" << std::endl;
+        std::cerr << "PaserSub can not get class[" << subNode->name << "]" << std::endl;
         m_errCode = -1;
         return nullptr;
     }
@@ -128,36 +133,55 @@ Sub *MusicScoreManager::PaserSub(xmlNodePtr subNode)
 
 Clap *MusicScoreManager::PaserClap(xmlNodePtr clapNode)
 {
-    auto clap = GetNewInstance<Clap>(std::string((char*)clapNode->name));
+    auto clap = GetNewInstance<Clap>(std::string(reinterpret_cast<const char*>(clapNode->name)));
     if (clap == nullptr) {
-        std::cerr << "can not get class[" << clapNode->name << "]" << std::endl;
+        std::cerr << "PaserClap can not get class[" << clapNode->name << "]" << std::endl;
         m_errCode = -1;
         return nullptr;
     }
     printf("        <%s>\n", clapNode->name);
-    auto noteNode = clapNode->children;
+    auto comboNode = clapNode->children;
+    while (comboNode != nullptr) {
+        auto combo = PaserCombo(comboNode);
+        if (combo == nullptr) {
+            m_errCode = -1;
+            break;
+        }
+        clap->SetCombo(combo);
+        comboNode = comboNode->next;
+    }
+    printf("        </%s>\n", clapNode->name);
+    return clap;
+}
+
+Combo *MusicScoreManager::PaserCombo(xmlNodePtr comboNode)
+{
+    auto combo = GetNewInstance<Combo>(std::string(reinterpret_cast<const char*>(comboNode->name)));
+    if (combo == nullptr) {
+        std::cerr << "PaserCombo can not get class[" << comboNode->name << "]" << std::endl;
+        m_errCode = -1;
+        return nullptr;
+    }
+    printf("            <%s>\n", comboNode->name);
+    auto noteNode = comboNode->children;
     while (noteNode != nullptr) {
         auto note = PaserNote(noteNode);
         if (note == nullptr) {
             m_errCode = -1;
             break;
         }
-        if (std::string((char*)noteNode->name) == "left") {
-            clap->SetLeftNote(note);
-        } else if (std::string((char*)noteNode->name) == "right") {
-            clap->SetRightNote(note);
-        }
+        combo->SetNote(note);
         noteNode = noteNode->next;
     }
-    printf("        </%s>\n", clapNode->name);
-    return clap;
+    printf("            </%s>\n", comboNode->name);
+    return combo;
 }
 
 Note *MusicScoreManager::PaserNote(xmlNodePtr noteNode)
 {
-    auto note = GetNewInstance<Note>(std::string("Note"));
+    auto note = GetNewInstance<Note>(std::string(reinterpret_cast<const char*>(noteNode->name)));
     if (note == nullptr) {
-        std::cerr << "can not get class[Note]" << std::endl;
+        std::cerr << "PaserNote can not get class[" << noteNode->name << "]" << std::endl;
         m_errCode = -1;
         return nullptr;
     }
@@ -167,8 +191,9 @@ Note *MusicScoreManager::PaserNote(xmlNodePtr noteNode)
     note->SetMusicalNote(Music::MusicalNote::FromString(GetNodeProp(noteNode, "note")));
     note->SetType(Music::NoteType::FromString(GetNodeProp(noteNode, "type")));
 
-    printf("            <%s rollCall=%s octive=%d note=%s type=%s/>\n",
+    printf("                <%s channel=%s rollCall=%s octive=%d note=%s type=%s/>\n",
            noteNode->name,
+           GetNodeProp(noteNode, "channel").c_str(),
            Music::RollCall::ToString(note->RollCall()).c_str(),
            note->Octive(),
            Music::MusicalNote::ToString(note->MusicalNote()).c_str(),

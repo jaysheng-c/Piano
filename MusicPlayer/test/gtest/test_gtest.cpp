@@ -9,9 +9,20 @@
 #include "interface/xml_reader.h"
 #include "interface/music_score.h"
 
+
+#define GET_SET(type, name) \
+public:                                                     \
+    inline type name() { return m_##name; }                 \
+    inline void set_##name(type val) { m_##name = val; }    \
+private:                                                    \
+    type m_##name;
+
 TEST(GTest, hello)
 {
     printf("This is a gtest test.\n");
+    class Test {
+        GET_SET(int, number)
+    };
 }
 
 TEST(GTest, XmlWriter)
@@ -25,17 +36,17 @@ TEST(GTest, XmlWriter)
     xmlWriter.SetFileDictory(dir);
     auto root = xmlWriter.CreateRoot("music");
     ASSERT_TRUE(root != nullptr);
-    auto node = xmlWriter.CreateNode("key");
+    auto node = XmlWriter::CreateNode("key");
     ASSERT_TRUE(node != nullptr);
-    xmlWriter.AppandChild(root, node);
-    xmlWriter.SetNodeText(node, "As");
-    node = xmlWriter.CreateNode("note");
+    XmlWriter::AppandChild(root, node);
+    XmlWriter::SetNodeText(node, "As");
+    node = XmlWriter::CreateNode("note");
     ASSERT_TRUE(node != nullptr);
     std::list<XmlWriter::Property> props{
         XmlWriter::Property("rollcall", "DO")
     };
-    xmlWriter.SetNodePop(node, props);
-    xmlWriter.AppandChild(root, node);
+    XmlWriter::SetNodePop(node, props);
+    XmlWriter::AppandChild(root, node);
 
     ret = xmlWriter.SaveXmlDoc(fileName);
     ASSERT_TRUE(ret == 0) << ret;

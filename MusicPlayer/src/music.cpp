@@ -74,7 +74,7 @@ std::string Music::RollCall::ToString(int rollcall)
 
         XX(DO);XX(DOs);XX(RE);XX(REs);XX(MI);XX(FA);
         XX(FAs);XX(SOL);XX(SOLs);XX(LA);XX(LAs);XX(XI);
-        XX(STOP);
+        XX(STOP);XX(ZERO);
 #undef XX
         default:
             break;
@@ -90,7 +90,7 @@ int Music::RollCall::FromString(const std::string &str)
     }
     XX(DO,DO);XX(DOs,DOs);XX(RE,RE);XX(REs,REs);XX(MI,MI);XX(FA,FA);
     XX(FAs,FAs);XX(SOL,SOL);XX(SOLs,SOLs);XX(LA,LA);XX(LAs,LAs);XX(XI,XI);
-    XX(STOP,STOP);
+    XX(STOP,STOP);XX(ZERO,ZERO);
 
     return ROLLCALL::STOP;
 #undef XX

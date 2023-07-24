@@ -107,7 +107,7 @@ xmlXPathObjectPtr XmlReader::GetXmlXPathObjectPtr(const std::string &xpath)
         Error();
         return nullptr;
     }
-    result = xmlXPathEvalExpression(BAD_CAST(xpath.c_str()), context);
+    result = xmlXPathEvalExpression(reinterpret_cast<const xmlChar*>(xpath.c_str()), context);
     xmlXPathFreeContext(context);
     return result;
 }

@@ -53,7 +53,7 @@ public:
     class RollCall {
     public:
         enum ROLLCALL {
-            STOP = -1, DO = 0, DOs = 1, RE = 2, REs = 3, MI = 4, FA = 5, FAs = 6, SOL = 7, SOLs = 8, LA = 9, LAs = 10, XI = 11
+            ZERO = -2, STOP = -1, DO = 0, DOs = 1, RE = 2, REs = 3, MI = 4, FA = 5, FAs = 6, SOL = 7, SOLs = 8, LA = 9, LAs = 10, XI = 11
         };
         static std::string ToString(int rollcall);
         static int FromString(const std::string &str);
