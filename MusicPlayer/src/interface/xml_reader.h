@@ -23,14 +23,14 @@ public:
     virtual ~XmlReader();
 
     int OpenXmlDoc(const std::string& file, const std::string& encoding = "utf-8", int option = XML_PARSE_NOBLANKS);
-    int CloseXml();
+    void CloseXml();
     xmlNodePtr GetXmlRoot();
-    std::string GetNodeProp(const xmlNodePtr node, const std::string& name);
-    std::string GetNodeContent(const xmlNodePtr node);
+    static std::string GetNodeProp(xmlNodePtr node, const std::string& name);
+    static std::string GetNodeContent(xmlNodePtr node);
     xmlNodePtr FindNode(const std::string& xpath);
     xmlXPathObjectPtr GetXmlXPathObjectPtr(const std::string &xpath);
 protected:
-    int Error();
+    static int Error();
 private:
     xmlDocPtr m_xmlDoc;
 

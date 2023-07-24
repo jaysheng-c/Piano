@@ -25,7 +25,7 @@ XmlReader::XmlReader() : m_xmlDoc(nullptr)
 
 XmlReader::~XmlReader()
 {
-    (void)CloseXml();
+    CloseXml();
 }
 
 int XmlReader::OpenXmlDoc(const std::string &file, const std::string& encoding, int option)
@@ -40,16 +40,14 @@ int XmlReader::OpenXmlDoc(const std::string &file, const std::string& encoding, 
     return 0;
 }
 
-int XmlReader::CloseXml()
+void XmlReader::CloseXml()
 {
-    if (m_xmlDoc == nullptr) {
-        return 0;
+    if (m_xmlDoc != nullptr) {
+        xmlFreeDoc(m_xmlDoc);
+        xmlCleanupParser();
+        xmlMemoryDump();
+        m_xmlDoc = nullptr;
     }
-    xmlFreeDoc(m_xmlDoc);
-    xmlCleanupParser();
-    xmlMemoryDump();
-    m_xmlDoc = nullptr;
-    return 0;
 }
 
 xmlNodePtr XmlReader::GetXmlRoot()
@@ -61,23 +59,23 @@ xmlNodePtr XmlReader::GetXmlRoot()
     return xmlDocGetRootElement(m_xmlDoc);
 }
 
-std::string XmlReader::GetNodeProp(const xmlNodePtr node, const std::string &name)
+std::string XmlReader::GetNodeProp(xmlNodePtr node, const std::string &name)
 {
     xmlChar* xmlValue = xmlGetProp(node, BAD_CAST(name.c_str()));
     if (xmlValue == nullptr) {
         return "";
     }
-    return std::string((char*)(xmlValue));
+    return reinterpret_cast<char*>(xmlValue);
 
 }
 
-std::string XmlReader::GetNodeContent(const xmlNodePtr node)
+std::string XmlReader::GetNodeContent(xmlNodePtr node)
 {
     xmlChar *xmlContent = xmlNodeGetContent(node);
     if (xmlContent == nullptr) {
         return "";
     }
-    return std::string((char*)(xmlContent));
+    return reinterpret_cast<char*>(xmlContent);
 }
 
 xmlNodePtr XmlReader::FindNode(const std::string &xpath)

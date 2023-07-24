@@ -53,10 +53,10 @@ TEST(GTest, XmlReader)
     ASSERT_TRUE(root != nullptr);
     auto node = root->children;
     ASSERT_TRUE(node != nullptr);
-    std::string content = xmlReader.GetNodeContent(node);
+    std::string content = XmlReader::GetNodeContent(node);
     std::cout << node->name << " " << content << std::endl;
     node = node->next;
-    std::string value = xmlReader.GetNodeProp(node, "rollcall");
+    std::string value = XmlReader::GetNodeProp(node, "rollcall");
     std::cout << node->name << " rollcall=" << value << std::endl;
     xmlReader.CloseXml();
 }
@@ -70,11 +70,12 @@ TEST(GTest, XmlReaderXpath)
     auto ret = xmlReader.OpenXmlDoc(dir + fileName);
     ASSERT_TRUE(ret == 0) << ret;
     auto node = xmlReader.FindNode("//name");
-    std::cout << xmlReader.GetNodeContent(node) << std::endl;
+    std::cout << XmlReader::GetNodeContent(node) << std::endl;
 }
 
 TEST(GTest, MusicScore)
 {
+    printf("MusicScore.\n");
     std::string fileName = "RomanticPhone2.xml";
     std::string dir = "E:/IDE/_ProgramFile/QtProject/Piano/";
     MusicScoreManager manager;
