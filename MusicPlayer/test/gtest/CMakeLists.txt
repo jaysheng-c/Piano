@@ -13,6 +13,7 @@ set(TEST
         ${BASE_DIR}/src/xml_writer.cpp
         ${BASE_DIR}/src/xml_reader.cpp
         ${BASE_DIR}/src/music_score.cpp
+        ${BASE_DIR}/src/reflector_base.cpp
         )
 
 add_executable(MyTest test_gtest.cpp)

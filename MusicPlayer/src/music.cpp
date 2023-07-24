@@ -151,12 +151,32 @@ int Music::MusicalNote::FromString(const std::string &str)
 
 std::string Music::NoteType::ToString(int note)
 {
-    return std::string();
+    switch(note) {
+#define XX(name) \
+    case TYPE::name: \
+        return #name; \
+        break;
+
+        XX(LIAISON);
+        XX(UN_LIAISON);
+#undef XX
+        default:
+            break;
+    }
+    return "UNKNOW";
 }
 
 int Music::NoteType::FromString(const std::string &str)
 {
-    return 0;
+#define XX(note, v) \
+    if(str == #v) { \
+        return TYPE::note; \
+    }
+    XX(LIAISON,LIAISON);
+    XX(UN_LIAISON,LIAISON);
+
+    return TYPE::UN_LIAISON;
+#undef XX
 }
 
 std::string Music::Key::ToString(int key)

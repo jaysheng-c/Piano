@@ -77,6 +77,10 @@ TEST(GTest, MusicScore)
 {
     std::string fileName = "RomanticPhone2.xml";
     std::string dir = "E:/IDE/_ProgramFile/QtProject/Piano/";
-    MusicScore musicScore(dir + fileName);
-    musicScore.Deserialize();
+    MusicScoreManager manager;
+
+    auto ret = manager.OpenXmlDoc(dir + fileName);
+    ASSERT_TRUE(ret == 0) << ret;
+    ret = manager.Paser();
+    ASSERT_TRUE(ret == 0) << ret;
 }

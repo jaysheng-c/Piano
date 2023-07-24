@@ -28,7 +28,7 @@ public:
     std::string GetNodeProp(const xmlNodePtr node, const std::string& name);
     std::string GetNodeContent(const xmlNodePtr node);
     xmlNodePtr FindNode(const std::string& xpath);
-    xmlXPathObjectPtr GetNodeSet(const std::string &xpath);
+    xmlXPathObjectPtr GetXmlXPathObjectPtr(const std::string &xpath);
 protected:
     int Error();
 private:

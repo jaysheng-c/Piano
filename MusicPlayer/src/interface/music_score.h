@@ -13,11 +13,10 @@
 #define PIANO_MUSIC_SCORE_H
 
 #include <string>
-#include <list>
 #include <vector>
 
-#include "serialize.h"
 #include "reflector/reflector.h"
+#include "xml_reader.h"
 
 class Note : public ReflectorObject {
 public:
@@ -39,6 +38,9 @@ private:
 
 class Clap : public ReflectorObject {
 public:
+    using Notes = std::vector<Note*>;
+
+    ~Clap() override;
     inline size_t LeftNoteSize() const { return m_leftNotes.size(); }
     inline size_t RightNoteSize() const { return m_rightNotes.size(); }
     inline Note *LeftNote(int index) const {
@@ -57,12 +59,13 @@ public:
     inline void SetLeftNote(Note *note) { m_leftNotes.emplace_back(note); }
     inline void SetRightNote(Note *note) { m_rightNotes.emplace_back(note); }
 private:
-    std::vector<Note*> m_leftNotes;    // 左手音符
-    std::vector<Note*> m_rightNotes;   // 右手音符
+    Notes m_leftNotes;    // 左手音符
+    Notes m_rightNotes;   // 右手音符
 };
 
 class Sub : public ReflectorObject {
 public:
+    ~Sub() override;
     inline int Number() const { return m_number; }
     inline bool Repeat() const { return m_repeat; }
 
@@ -84,9 +87,9 @@ private:
 };
 
 // 乐谱
-//class MusicScore : public SerializeWork {
 class MusicScore : public ReflectorObject {
 public:
+    ~MusicScore() override;
     inline std::string Name() const { return m_name; }
     inline std::string Key() const { return m_key; }
     inline int Beat() const { return m_beat; }
@@ -104,7 +107,7 @@ public:
         }
         return m_subs[index];
     }
-    inline void SetClap(Sub *clap) { m_subs.emplace_back(clap); }
+    inline void SetSub(Sub *clap) { m_subs.emplace_back(clap); }
 private:
     std::string m_name;             // 乐谱名
     std::string m_key;              // 主key
@@ -112,6 +115,22 @@ private:
     float m_rate;                   // 速率
 
     std::vector<Sub*> m_subs;
+};
+
+class MusicScoreManager : public XmlReader {
+public:
+    ~MusicScoreManager() override;
+    int Paser();
+
+protected:
+    int PaserMusicScore();
+    Sub *PaserSub(xmlNodePtr subNode);
+    Clap *PaserClap(xmlNodePtr clapNode);
+    Note *PaserNote(xmlNodePtr noteNode);
+
+private:
+    MusicScore *m_musicScore;
+    int m_errCode;
 };
 
 
