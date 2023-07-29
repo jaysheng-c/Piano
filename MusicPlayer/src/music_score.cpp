@@ -71,11 +71,6 @@ int MusicScoreManager::PaserMusicScore()
         return -1;
     }
 
-//    m_musicScore->SetName(GetNodeContent(FindNode("//name")));
-//    m_musicScore->SetKey(GetNodeContent(FindNode("//key")));
-//    m_musicScore->SetBeat(std::stoi(GetNodeContent(FindNode("//beat"))));
-//    m_musicScore->SetRate(std::stof(GetNodeContent(FindNode("//rate"))));
-
     MusicScore::GetClassPtr()->GetField("name").Set(m_musicScore, GetNodeContent(FindNode("//name")));
     MusicScore::GetClassPtr()->GetField("key").Set(m_musicScore, GetNodeContent(FindNode("//key")));
     MusicScore::GetClassPtr()->GetField("beat").Set(m_musicScore, std::stoi(GetNodeContent(FindNode("//beat"))));
@@ -86,7 +81,6 @@ int MusicScoreManager::PaserMusicScore()
            "    <key>%s</key>\n"
            "    <beat>%d</beat>\n"
            "    <rate>%f</rate>\n",
-//           m_musicScore->Name().c_str(), m_musicScore->Key().c_str(), m_musicScore->Beat(), m_musicScore->Rate()
            MusicScore::GetClassPtr()->GetField("name").Get<std::string>(m_musicScore).c_str(),
            MusicScore::GetClassPtr()->GetField("key").Get<std::string>(m_musicScore).c_str(),
            MusicScore::GetClassPtr()->GetField("beat").Get<int>(m_musicScore),
@@ -107,7 +101,6 @@ int MusicScoreManager::PaserMusicScore()
             break;
         }
         subs.emplace_back(sub);
-//        m_musicScore->SetSub(sub);
     }
     MusicScore::GetClassPtr()->GetField("subs").Set(m_musicScore, subs);
     printf("</music>");
@@ -124,16 +117,12 @@ Sub *MusicScoreManager::PaserSub(xmlNodePtr subNode)
         return nullptr;
     }
 
-//    sub->SetNumber(std::stoi(GetNodeProp(subNode, "number")));
     Sub::GetClassPtr()->GetField("number").Set(sub, std::stoi(GetNodeProp(subNode, "number")));
     if (GetNodeProp(subNode, "repeat") == "true") {
         Sub::GetClassPtr()->GetField("repeat").Set(sub, true);
-//        sub->SetRepeat(true);
     } else {
         Sub::GetClassPtr()->GetField("repeat").Set(sub, false);
-//        sub->SetRepeat(false);
     }
-//    printf("    <%s number=%d repeat=%d>\n", subNode->name, sub->Number(), sub->Repeat());
     printf("    <%s number=%d repeat=%d>\n", subNode->name,
            Sub::GetClassPtr()->GetField("number").Get<int>(sub),
            Sub::GetClassPtr()->GetField("repeat").Get<bool>(sub));
@@ -145,7 +134,6 @@ Sub *MusicScoreManager::PaserSub(xmlNodePtr subNode)
             m_errCode = -1;
             break;
         }
-//        sub->SetClap(clap);
         claps.emplace_back(clap);
         clapNode = clapNode->next;
     }
@@ -171,7 +159,6 @@ Clap *MusicScoreManager::PaserClap(xmlNodePtr clapNode)
             m_errCode = -1;
             break;
         }
-//        clap->SetCombo(combo);
         combos.emplace_back(combo);
         comboNode = comboNode->next;
     }
@@ -197,7 +184,6 @@ Combo *MusicScoreManager::PaserCombo(xmlNodePtr comboNode)
             m_errCode = -1;
             break;
         }
-//        combo->SetNote(note);
         notes.emplace_back(note);
         noteNode = noteNode->next;
     }
@@ -214,12 +200,6 @@ Note *MusicScoreManager::PaserNote(xmlNodePtr noteNode)
         m_errCode = -1;
         return nullptr;
     }
-//    std::string val = GetNodeProp(noteNode, "rollcall");
-//    note->SetChannel(GetNodeProp(noteNode, "channel"));
-//    note->SetRollCall(Music::RollCall::FromString(GetNodeProp(noteNode, "rollcall")));
-//    note->SetOctive(std::stoi(GetNodeProp(noteNode, "octive")));
-//    note->SetMusicalNote(Music::MusicalNote::FromString(GetNodeProp(noteNode, "note")));
-//    note->SetType(Music::NoteType::FromString(GetNodeProp(noteNode, "type")));
 
     Note::GetClassPtr()->GetField("channel").Set(note, GetNodeProp(noteNode, "channel"));
     Note::GetClassPtr()->GetField("rollcall").Set(note, Music::RollCall::FromString(GetNodeProp(noteNode, "rollcall")));
@@ -234,11 +214,6 @@ Note *MusicScoreManager::PaserNote(xmlNodePtr noteNode)
            Note::GetClassPtr()->GetField("octive").Get<int>(note),
            Music::MusicalNote::ToString(Note::GetClassPtr()->GetField("musicalNote").Get<int>(note)).c_str(),
            Music::NoteType::ToString(Note::GetClassPtr()->GetField("type").Get<int>(note)).c_str()
-//           note->Channel().c_str(),
-//           Music::RollCall::ToString(note->RollCall()).c_str(),
-//           note->Octive(),
-//           Music::MusicalNote::ToString(note->MusicalNote()).c_str(),
-//           Music::NoteType::ToString(note->Type()).c_str()
            );
     return note;
 }
