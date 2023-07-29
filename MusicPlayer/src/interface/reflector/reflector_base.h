@@ -48,5 +48,42 @@ private:
 };
 
 
+/***
+ 类成员反射
+ */
+class ReflectField {
+public:
+    ReflectField(unsigned long long offset, std::string key);
+    ReflectField(const ReflectField& field);
+
+    std::string Key() const;
+    template<class ValueType, class ObjectType>
+    ValueType Get(ObjectType *obj) {
+        return *((ValueType*)((unsigned char*)obj + m_offset));
+    }
+    template<class ObjectType, class ValueType>
+    void Set(ObjectType *obj, const ValueType &value) {
+        *((ValueType*)((unsigned char*)obj + m_offset)) = value;
+    }
+public:
+    unsigned long long m_offset;
+    std::string m_key;
+};
+
+class ReflectFieldClass {
+public:
+    std::map<std::string, ReflectField> GetFields() const;
+    ReflectField GetField(const std::string& key);
+    void AddField(const ReflectField& field);
+
+private:
+    std::map<std::string, ReflectField> m_fields;
+    std::string m_key;
+};
+
+class FieldRegister {
+public:
+    FieldRegister(ReflectFieldClass *ptr, unsigned long long offset, const std::string& key);
+};
 
 #endif // REFLECTOR_BASE_H

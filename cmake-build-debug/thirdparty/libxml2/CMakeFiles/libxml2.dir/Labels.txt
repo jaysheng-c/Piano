@@ -1,0 +1,13 @@
+# Target labels
+ libxml2
+# Source files and their labels
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/CMakeFiles/libxml2
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/CMakeFiles/libxml2.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/CMakeFiles/libxml2-complete.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-build.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-configure.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-download.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-install.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-mkdir.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-patch.rule
+E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-update.rule

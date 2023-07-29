@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<music>
+    <name>浪漫手机</name>
+    <key>As</key>
+    <rate>96</rate>
+    <beats>
+        <combo>
+            <note rollcall="DO" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="XI" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+        <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="LA" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+        <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="FA" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <combo>
+            <note rollcall="SOL" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <combo>
+            <note rollcall="SOLs" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="SOLs" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="SOLs" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="DO" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="XI" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+        <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="LA" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+        <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="FA" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="-1" note="EIGHTH_NOTE"/>
+        <note/>
+        <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+        <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+        <note/>
+        <repeat>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOLs" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="FA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="0" note="SIXTEENTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="SIXTEENTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="SIXTEENTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="SIXTEENTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOLs" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="FA" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="FA" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="STOP" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="SIXTEENTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="SIXTEENTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="1" note="SIXTEENTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="QUARTER_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="FA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="SIXTEENTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="SIXTEENTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="SIXTEENTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="SIXTEENTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="SIXTEENTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="1" note="SIXTEENTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="STOP" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="2" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="2" note="EIGHTH_NOTE"/>
+            <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="SIXTEENTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="SIXTEENTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="SIXTEENTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-2" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="STOP" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="SIXTEENTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="SIXTEENTH_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="SIXTEENTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="LA" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <combo>
+                <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="RE" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="STOP" octive="0" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="MI" octive="1" note="QUARTER_NOTE"/>
+                <note rollcall="RE" octive="0" note="QUARTER_NOTE"/>
+                <note rollcall="DO" octive="0" note="QUARTER_NOTE"/>
+                <note rollcall="SOL" octive="-1" note="QUARTER_NOTE"/>
+            </combo>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <combo>
+                <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+                <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            </combo>
+            <note rollcall="SOL" octive="0" note="QUARTER_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="1" note="QUARTER_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="RE" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+        </repeat>
+        <combo>
+            <note rollcall="DO" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="DO" octive="2" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="RE" octive="2" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="-2" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+        <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="XI" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="MI" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="LA" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <combo>
+            <note rollcall="FA" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <combo>
+            <note rollcall="SOLs" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="SOLs" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        <note rollcall="LA" octive="0" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="XI" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <note rollcall="SOLs" octive="1" note="EIGHTH_NOTE"/>
+        <combo>
+            <note rollcall="SOL" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="FA" octive="0" note="EIGHTH_NOTE"/>
+        </combo>
+        <combo>
+            <note rollcall="SOL" octive="1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="0" note="EIGHTH_NOTE"/>
+            <note rollcall="SOL" octive="-1" note="EIGHTH_NOTE"/>
+            <note rollcall="DO" octive="-1" note="EIGHTH_NOTE"/>
+        </combo>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+        <note rollcall="STOP" octive="0" note="QUARTER_NOTE"/>
+    </beats>
+</music>

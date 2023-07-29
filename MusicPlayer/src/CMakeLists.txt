@@ -9,6 +9,7 @@ link_libxml2(music)
 set(SOURCE
         reflector_base.cpp
         serialize.cpp
+        xml_node.cpp
         xml_writer.cpp
         xml_reader.cpp
         music.cpp

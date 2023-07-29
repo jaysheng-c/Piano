@@ -39,4 +39,33 @@ public:                                                                         
 };                                                                                  \
 Register_##name register_##name;
 
+
+#define OFFSET(obj, key) ((unsigned long long)(&((obj*)0)->key))
+
+#define FIELD_CLASS_REGISTER(obj)                   \
+public:                                             \
+    static ReflectFieldClass* GetClassPtr()         \
+    {                                               \
+        static ReflectFieldClass _class_##obj;      \
+        return &_class_##obj;                       \
+    }
+
+#define FILED_REGISTER(access, fieldType, fieldKey, obj) \
+access:                                                  \
+    fieldType m_##fieldKey;                              \
+private:                                                 \
+    class FieldRegister##fieldKey {                      \
+    public:                                              \
+        FieldRegister##fieldKey() {                      \
+            static FieldRegister reg##fieldKey(          \
+            obj::GetClassPtr(),                          \
+            OFFSET(obj, m_##fieldKey),                   \
+            #fieldKey);                                  \
+            }                                            \
+        }fieldKey##Register;
+
+#define PRIVATE_FILED_RIGISTER(fieldType, fieldKey, obj) FILED_REGISTER(private, fieldType, fieldKey, obj)
+#define PUBLIC_FILED_RIGISTER(fieldType, fieldKey, obj) FILED_REGISTER(public, fieldType, fieldKey, obj)
+#define PROTECTED_FILED_RIGISTER(fieldType, fieldKey, obj) FILED_REGISTER(protected, fieldType, fieldKey, obj)
+
 #endif // REFLECTOR_H

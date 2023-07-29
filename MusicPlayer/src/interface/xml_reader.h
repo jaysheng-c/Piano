@@ -12,24 +12,32 @@
 #ifndef PIANO_XML_READER_H
 #define PIANO_XML_READER_H
 
-#include <string>
 
 #include "libxml/xmlreader.h"
 #include "libxml/xpath.h"
 
-class XmlReader {
+#include "reader.h"
+
+class XmlReader : public Reader<xmlNode> {
 public:
     explicit XmlReader();
-    virtual ~XmlReader();
+    ~XmlReader() override;
 
+    int Open(const std::string& file) override { return OpenXmlDoc(file); }
+    void Close() override { CloseXml(); }
+    xmlNode* Root() const override { return GetXmlRoot(); }
+    std::string Content(xmlNode* node) const override { return GetNodeContent(node); }
+    std::string Prop(xmlNode* node, const std::string& name) const override { return GetNodeProp(node, name); }
+
+    xmlNodePtr FindNode(const std::string& xpath);
+
+protected:
     int OpenXmlDoc(const std::string& file, const std::string& encoding = "utf-8", int option = XML_PARSE_NOBLANKS);
     void CloseXml();
-    xmlNodePtr GetXmlRoot();
+    xmlNodePtr GetXmlRoot() const;
     static std::string GetNodeProp(xmlNodePtr node, const std::string& name);
     static std::string GetNodeContent(xmlNodePtr node);
-    xmlNodePtr FindNode(const std::string& xpath);
     xmlXPathObjectPtr GetXmlXPathObjectPtr(const std::string &xpath);
-protected:
     static int Error();
 private:
     xmlDocPtr m_xmlDoc;

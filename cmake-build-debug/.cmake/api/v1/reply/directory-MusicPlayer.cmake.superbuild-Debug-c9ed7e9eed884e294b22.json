@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "MusicPlayer/cmake/superbuild",
+		"source" : "MusicPlayer/cmake/superbuild"
+	}
+}

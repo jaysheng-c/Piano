@@ -12,6 +12,7 @@
 #include "interface/reflector/reflector_base.h"
 
 #include <iostream>
+#include <utility>
 
 Reflector::~Reflector()
 {
@@ -46,4 +47,45 @@ Reflector &Reflector::GetInstance()
 {
     static Reflector reflector;
     return reflector;
+}
+
+ReflectField::ReflectField(unsigned long long int offset, std::string key) : m_offset(offset), m_key(std::move(key))
+{
+
+}
+
+ReflectField::ReflectField(const ReflectField &field)
+{
+    m_offset = field.m_offset;
+    m_key = field.m_key;
+}
+
+std::string ReflectField::Key() const
+{
+    return m_key;
+}
+
+std::map<std::string, ReflectField> ReflectFieldClass::GetFields() const
+{
+    return m_fields;
+}
+
+ReflectField ReflectFieldClass::GetField(const std::string &key)
+{
+    auto it = m_fields.find(key);
+    if (it == m_fields.cend()) {
+        std::cout << key << " is not exit.\n";
+    }
+    return it->second;
+}
+
+void ReflectFieldClass::AddField(const ReflectField &field)
+{
+    m_fields.insert(std::pair<std::string, ReflectField>(field.Key(), field));
+}
+
+FieldRegister::FieldRegister(ReflectFieldClass *ptr, unsigned long long int offset, const std::string &key)
+{
+    ReflectField field(offset, key);
+    ptr->AddField(field);
 }

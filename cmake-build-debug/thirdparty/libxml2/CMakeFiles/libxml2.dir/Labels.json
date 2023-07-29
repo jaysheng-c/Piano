@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/CMakeFiles/libxml2"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/CMakeFiles/libxml2.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/CMakeFiles/libxml2-complete.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-build.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-configure.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-download.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-install.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-mkdir.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-patch.rule"
+		},
+		{
+			"file" : "E:/IDE/_ProgramFile/QtProject/Piano/cmake-build-debug/thirdparty/libxml2/libxml2/src/libxml2-stamp/libxml2-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"libxml2"
+		],
+		"name" : "libxml2"
+	}
+}

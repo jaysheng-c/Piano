@@ -25,7 +25,7 @@ XmlReader::XmlReader() : m_xmlDoc(nullptr)
 
 XmlReader::~XmlReader()
 {
-    CloseXml();
+    Close();
 }
 
 int XmlReader::OpenXmlDoc(const std::string &file, const std::string& encoding, int option)
@@ -50,7 +50,7 @@ void XmlReader::CloseXml()
     }
 }
 
-xmlNodePtr XmlReader::GetXmlRoot()
+xmlNodePtr XmlReader::GetXmlRoot() const
 {
     if (m_xmlDoc == nullptr) {
         // TODO: 不存在doc指针

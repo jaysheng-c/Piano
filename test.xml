@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<music xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="music.xsd">
+    <name>1</name>
+    <key>2</key>
+    <beat>3</beat>
+    <rate>3</rate>
+
+</music>
