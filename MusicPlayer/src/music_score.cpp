@@ -14,6 +14,7 @@
 #include <iostream>
 #include "interface/music.h"
 #include "interface/xml_writer.h"
+#include "interface/xml_reader.h"
 
 REFLECT(Note)
 REFLECT(Combo)
@@ -22,15 +23,15 @@ REFLECT(Sub)
 REFLECT(MusicScore)
 
 
-void *Note::Serialize()
+void *Note::Serialize() const
 {
     auto node = XmlWriter::CreateNode("note");
     std::list<XmlWriter::Property> props = {
             XmlWriter::Property("channel", Note::GetClassPtr()->GetField("channel").Get<std::string>(this)),
-            XmlWriter::Property("rollcall", std::to_string(Note::GetClassPtr()->GetField("rollcall").Get<int>(this))),
+            XmlWriter::Property("rollcall", Music::RollCall::ToString(Note::GetClassPtr()->GetField("rollcall").Get<int>(this))),
             XmlWriter::Property("octive", std::to_string(Note::GetClassPtr()->GetField("octive").Get<int>(this))),
-            XmlWriter::Property("musicalNote", std::to_string(Note::GetClassPtr()->GetField("musicalNote").Get<int>(this))),
-            XmlWriter::Property("type", std::to_string(Note::GetClassPtr()->GetField("type").Get<int>(this)))
+            XmlWriter::Property("musicalNote", Music::MusicalNote::ToString(Note::GetClassPtr()->GetField("musicalNote").Get<int>(this))),
+            XmlWriter::Property("type", Music::NoteType::ToString(Note::GetClassPtr()->GetField("type").Get<int>(this)))
     };
     XmlWriter::SetNodePop(node, props);
     return node;
@@ -59,23 +60,14 @@ Combo::~Combo()
     m_notes.clear();
 }
 
-void *Combo::Serialize()
+void *Combo::Serialize() const
 {
+    auto noteNode = XmlWriter::CreateNode("Combo");
     auto notes = Combo::GetClassPtr()->GetField("notes").Get<std::vector<Note*>>(this);
-    xmlNodePtr root = nullptr;
-    xmlNodePtr parent = nullptr;
     for (auto note : notes) {
-        auto comboNode = XmlWriter::CreateNode("combo");
-        auto noteNode = static_cast<xmlNodePtr>(note->Serialize());
-        XmlWriter::AppandChild(comboNode, noteNode);
-        if (root == nullptr) {
-            root = comboNode;
-            parent = root;
-        }
-        parent->next = comboNode;
-        parent = comboNode;
+        XmlWriter::AppandChild(noteNode, static_cast<xmlNodePtr>(note->Serialize()));
     }
-    return root;
+    return noteNode;
 }
 
 void Combo::Deserialize(void *source)
@@ -101,9 +93,15 @@ Clap::~Clap()
     m_combos.clear();
 }
 
-void *Clap::Serialize()
+void *Clap::Serialize() const
 {
-    return ReflectorObject::Serialize();
+    auto clapNode = XmlWriter::CreateNode("Clap");
+
+    auto combos = Clap::GetClassPtr()->GetField("combos").Get<std::vector<Combo*>>(this);
+    for (auto combo : combos) {
+        XmlWriter::AppandChild(clapNode, static_cast<xmlNodePtr>(combo->Serialize()));
+    }
+    return clapNode;
 }
 
 void Clap::Deserialize(void *source)
@@ -128,9 +126,20 @@ Sub::~Sub()
     m_claps.clear();
 }
 
-void *Sub::Serialize()
+void *Sub::Serialize() const
 {
-    return ReflectorObject::Serialize();
+    auto subNode = XmlWriter::CreateNode("Sub");
+    std::list<XmlWriter::Property> props = {
+            XmlWriter::Property("number", std::to_string(Sub::GetClassPtr()->GetField("number").Get<int>(this))),
+            XmlWriter::Property("repeat", Sub::GetClassPtr()->GetField("number").Get<bool>(this) ? "true" : "false")
+    };
+    XmlWriter::SetNodePop(subNode, props);
+
+    auto claps = Sub::GetClassPtr()->GetField("claps").Get<std::vector<Clap*>>(this);
+    for (auto clap : claps) {
+        XmlWriter::AppandChild(subNode, static_cast<xmlNodePtr>(clap->Serialize()));
+    }
+    return subNode;
 }
 
 void Sub::Deserialize(void *source)
@@ -161,9 +170,18 @@ MusicScore::~MusicScore()
     m_subs.clear();
 }
 
-void *MusicScore::Serialize()
+void *MusicScore::Serialize() const
 {
-    return ReflectorObject::Serialize();
+    auto musicNode = XmlWriter::CreateNode("music");
+    XmlWriter::AppandChild(musicNode, XmlWriter::CreateNode("name", MusicScore::GetClassPtr()->GetField("name").Get<std::string>(this)));
+    XmlWriter::AppandChild(musicNode, XmlWriter::CreateNode("key", MusicScore::GetClassPtr()->GetField("key").Get<std::string>(this)));
+    XmlWriter::AppandChild(musicNode, XmlWriter::CreateNode("beat", MusicScore::GetClassPtr()->GetField("beat").Get<int>(this)));
+    XmlWriter::AppandChild(musicNode, XmlWriter::CreateNode("rate", MusicScore::GetClassPtr()->GetField("rate").Get<float>(this)));
+    auto subs = MusicScore::GetClassPtr()->GetField("subs").Get<std::vector<Sub*>>(this);
+    for (auto sub : subs) {
+        XmlWriter::AppandChild(musicNode, static_cast<xmlNodePtr>(sub->Serialize()));
+    }
+    return musicNode;
 }
 
 void MusicScore::Deserialize(void *source)
@@ -193,15 +211,17 @@ MusicScoreManager::~MusicScoreManager()
     delete m_musicScore;
 }
 
-int MusicScoreManager::Paser()
+int MusicScoreManager::Paser(const std::string &file)
 {
-    return PaserMusicScore();
+    return PaserMusicScore(file);
 }
 
-int MusicScoreManager::PaserMusicScore()
+int MusicScoreManager::PaserMusicScore(const std::string &file)
 {
     m_errCode = 0;
-    if(m_xmlDoc == nullptr) {
+    XmlReader reader;
+
+    if(reader.Open(file)) {
         std::cerr << "Unknow where to parse the data from, please load the source data file" << std::endl;
         return -1;
     }
@@ -211,15 +231,20 @@ int MusicScoreManager::PaserMusicScore()
         return -1;
     }
 
-    m_musicScore->Deserialize(Root()->children);
+    m_musicScore->Deserialize(reader.Root()->children);
     return m_errCode;
 }
 
-int MusicScoreManager::Serialize(const std::string &file, const MusicScore *musicScore)
+int MusicScoreManager::Serialize(const std::string &fileName, const std::string &dircotry, MusicScore *musicScore)
 {
+    if (musicScore == nullptr) {
+        return -1;
+    }
     XmlWriter writer;
+    writer.SetFileDictory(dircotry);
     int ret = writer.CreateXmlDoc();
-
-    ret |= writer.SaveXmlDoc(file);
+    auto root = static_cast<xmlNodePtr>(musicScore->Serialize());
+    writer.SetRoot(root);
+    ret |= writer.SaveXmlDoc(fileName);
     return ret;
 }

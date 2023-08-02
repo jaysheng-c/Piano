@@ -33,6 +33,11 @@ public:
     int SaveXmlDoc(const std::string& fileName, const std::string &encoding = "utf-8");
     int SetFileDictory(const std::string& dir);
     xmlNodePtr CreateRoot(const std::string& name);
+    void SetRoot(xmlNodePtr root);
+    static xmlNodePtr CreateNode(const std::string& name, const std::string& content);
+    static xmlNodePtr CreateNode(const std::string& name, int content);
+    static xmlNodePtr CreateNode(const std::string& name, float content);
+    static xmlNodePtr CreateNode(const std::string& name, bool content);
     static xmlNodePtr CreateNode(const std::string& name);
     static void AppandChild(xmlNodePtr parent, xmlNodePtr cur);
     static int SetNodePop(xmlNodePtr node, const std::list<Property>& props);

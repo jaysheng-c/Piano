@@ -95,10 +95,11 @@ TEST(GTest, MusicScore)
     std::string dir = "E:/IDE/_ProgramFile/QtProject/Piano/";
     MusicScoreManager manager;
 
-    auto ret = manager.Open(dir + fileName);
+    auto ret = manager.Paser(dir + fileName);
     ASSERT_TRUE(ret == 0) << ret;
-    ret = manager.Paser();
-    ASSERT_TRUE(ret == 0) << ret;
+
+    fileName = "RomanticPhone3.xml";
+    manager.Serialize(fileName, dir, nullptr);
 }
 
 template <typename T, typename... Types>

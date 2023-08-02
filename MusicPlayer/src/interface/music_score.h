@@ -16,7 +16,6 @@
 #include <vector>
 
 #include "reflector/reflector.h"
-#include "xml_reader.h"
 
 class Note : public ReflectorObject {
 FIELD_CLASS_REGISTER(Note)
@@ -27,7 +26,7 @@ FIELD_CLASS_REGISTER(Note)
     PRIVATE_FILED_RIGISTER(int, type, Note)             // 类型（如：连音）
 
 public:
-    void *Serialize() override;
+    void *Serialize() const override;
     void Deserialize(void* source) override;
 };
 
@@ -37,7 +36,7 @@ FIELD_CLASS_REGISTER(Combo)
 
 public:
     ~Combo() override;
-    void *Serialize() override;
+    void *Serialize() const override;
     void Deserialize(void* source) override;
 };
 
@@ -47,7 +46,7 @@ FIELD_CLASS_REGISTER(Clap)
 
 public:
     ~Clap() override;
-    void *Serialize() override;
+    void *Serialize() const override;
     void Deserialize(void* source) override;
 };
 
@@ -59,7 +58,7 @@ FIELD_CLASS_REGISTER(Sub)
 
 public:
     ~Sub() override;
-    void *Serialize() override;
+    void *Serialize() const override;
     void Deserialize(void* source) override;
 };
 
@@ -74,19 +73,20 @@ FIELD_CLASS_REGISTER(MusicScore)
 
 public:
     ~MusicScore() override;
-    void *Serialize() override;
+    void *Serialize() const override;
     void Deserialize(void* source) override;
 
 };
 
-class MusicScoreManager : public XmlReader {
+class MusicScoreManager {
 public:
-    ~MusicScoreManager() override;
-    int Paser();
-    int Serialize(const std::string &file, const MusicScore* musicScore);
+    MusicScoreManager() = default;
+    ~MusicScoreManager();
+    int Paser(const std::string &file);
+    static int Serialize(const std::string &fileName, const std::string &dircotry, MusicScore* musicScore);
 
 protected:
-    int PaserMusicScore();
+    int PaserMusicScore(const std::string &file);
 
 private:
     MusicScore *m_musicScore;

@@ -80,6 +80,38 @@ xmlNodePtr XmlWriter::CreateRoot(const std::string &name)
     return node;
 }
 
+void XmlWriter::SetRoot(xmlNodePtr root)
+{
+    if (m_xmlDoc == nullptr) {
+        // TODO: 不存在doc指针
+        return;
+    }
+    (void)xmlDocSetRootElement(m_xmlDoc, root);
+}
+
+xmlNodePtr XmlWriter::CreateNode(const std::string &name, const std::string &content)
+{
+    auto node = CreateNode(name);
+    SetNodeText(node, content);
+    return node;
+}
+
+xmlNodePtr XmlWriter::CreateNode(const std::string &name, int content)
+{
+    return CreateNode(name, std::to_string(content));
+}
+
+xmlNodePtr XmlWriter::CreateNode(const std::string &name, float content)
+{
+    return CreateNode(name, std::to_string(content));
+}
+
+xmlNodePtr XmlWriter::CreateNode(const std::string &name, bool content)
+{
+    return CreateNode(name, content ? "true" : "false");
+
+}
+
 xmlNodePtr XmlWriter::CreateNode(const std::string &name)
 {
     return xmlNewNode(nullptr, reinterpret_cast<const xmlChar*>(name.c_str()));
@@ -125,4 +157,5 @@ int XmlWriter::SetNodeText(xmlNodePtr node, const std::string &text)
     AppandChild(node, textNode);
     return 0;
 }
+
 
