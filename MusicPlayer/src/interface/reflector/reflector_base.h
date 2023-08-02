@@ -19,6 +19,8 @@
 class ReflectorObject {
 public:
     virtual ~ReflectorObject() {}
+    virtual void *Serialize() { return nullptr; }
+    virtual void Deserialize(void *source) {}
 };
 
 // 创建反射类的工厂

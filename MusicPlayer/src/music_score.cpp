@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include "interface/music.h"
+#include "interface/xml_writer.h"
 
 REFLECT(Note)
 REFLECT(Combo)
@@ -20,12 +21,76 @@ REFLECT(Clap)
 REFLECT(Sub)
 REFLECT(MusicScore)
 
+
+void *Note::Serialize()
+{
+    auto node = XmlWriter::CreateNode("note");
+    std::list<XmlWriter::Property> props = {
+            XmlWriter::Property("channel", Note::GetClassPtr()->GetField("channel").Get<std::string>(this)),
+            XmlWriter::Property("rollcall", std::to_string(Note::GetClassPtr()->GetField("rollcall").Get<int>(this))),
+            XmlWriter::Property("octive", std::to_string(Note::GetClassPtr()->GetField("octive").Get<int>(this))),
+            XmlWriter::Property("musicalNote", std::to_string(Note::GetClassPtr()->GetField("musicalNote").Get<int>(this))),
+            XmlWriter::Property("type", std::to_string(Note::GetClassPtr()->GetField("type").Get<int>(this)))
+    };
+    XmlWriter::SetNodePop(node, props);
+    return node;
+}
+
+void Note::Deserialize(void *source)
+{
+    auto node = static_cast<xmlNodePtr>(source);
+    std::string value = XmlReader::GetNodeProp(node, "channel");
+    Note::GetClassPtr()->GetField("channel").Set(this, value);
+    value = XmlReader::GetNodeProp(node, "rollcall");
+    Note::GetClassPtr()->GetField("rollcall").Set(this, Music::RollCall::FromString(value));
+    value = XmlReader::GetNodeProp(node, "octive");
+    Note::GetClassPtr()->GetField("octive").Set(this, std::stoi(value));
+    value = XmlReader::GetNodeProp(node, "musicalNote");
+    Note::GetClassPtr()->GetField("musicalNote").Set(this, Music::MusicalNote::FromString(value));
+    value = XmlReader::GetNodeProp(node, "type");
+    Note::GetClassPtr()->GetField("type").Set(this, Music::NoteType::FromString(value));
+}
+
 Combo::~Combo()
 {
     for (auto& m_objectFactorie : m_notes) {
         delete m_objectFactorie;
     }
     m_notes.clear();
+}
+
+void *Combo::Serialize()
+{
+    auto notes = Combo::GetClassPtr()->GetField("notes").Get<std::vector<Note*>>(this);
+    xmlNodePtr root = nullptr;
+    xmlNodePtr parent = nullptr;
+    for (auto note : notes) {
+        auto comboNode = XmlWriter::CreateNode("combo");
+        auto noteNode = static_cast<xmlNodePtr>(note->Serialize());
+        XmlWriter::AppandChild(comboNode, noteNode);
+        if (root == nullptr) {
+            root = comboNode;
+            parent = root;
+        }
+        parent->next = comboNode;
+        parent = comboNode;
+    }
+    return root;
+}
+
+void Combo::Deserialize(void *source)
+{
+    auto comboNode = static_cast<xmlNodePtr>(source);
+    auto notes = Combo::GetClassPtr()->GetField("notes").Get<std::vector<Note*>>(this);
+    auto noteNode = comboNode->children;
+    while (noteNode != nullptr) {
+        auto note = GetNewInstance<Note>(std::string(reinterpret_cast<const char*>(noteNode->name)));
+        note->Deserialize(noteNode);
+        notes.emplace_back(note);
+        noteNode = noteNode->next;
+    }
+    Combo::GetClassPtr()->GetField("notes").Set(this, notes);
+
 }
 
 Clap::~Clap()
@@ -36,6 +101,25 @@ Clap::~Clap()
     m_combos.clear();
 }
 
+void *Clap::Serialize()
+{
+    return ReflectorObject::Serialize();
+}
+
+void Clap::Deserialize(void *source)
+{
+    auto clapNode = static_cast<xmlNodePtr>(source);
+    auto notes = Clap::GetClassPtr()->GetField("combos").Get<std::vector<Combo*>>(this);
+    auto noteNode = clapNode->children;
+    while (noteNode != nullptr) {
+        auto combo = GetNewInstance<Combo>(std::string(reinterpret_cast<const char*>(noteNode->name)));
+        combo->Deserialize(noteNode);
+        notes.emplace_back(combo);
+        noteNode = noteNode->next;
+    }
+    Clap::GetClassPtr()->GetField("combos").Set(this, notes);
+}
+
 Sub::~Sub()
 {
     for (auto& m_objectFactorie : m_claps) {
@@ -44,12 +128,64 @@ Sub::~Sub()
     m_claps.clear();
 }
 
+void *Sub::Serialize()
+{
+    return ReflectorObject::Serialize();
+}
+
+void Sub::Deserialize(void *source)
+{
+    auto subNode = static_cast<xmlNodePtr>(source);
+    Sub::GetClassPtr()->GetField("number").Set(this, std::stoi(XmlReader::GetNodeProp(subNode, "number")));
+    if (XmlReader::GetNodeProp(subNode, "repeat") == "true") {
+        Sub::GetClassPtr()->GetField("repeat").Set(this, true);
+    } else {
+        Sub::GetClassPtr()->GetField("repeat").Set(this, false);
+    }
+    auto claps = Sub::GetClassPtr()->GetField("claps").Get<std::vector<Clap*>>(this);
+    auto clapNode = subNode->children;
+    while (clapNode != nullptr) {
+        auto clap = GetNewInstance<Clap>(std::string(reinterpret_cast<const char*>(clapNode->name)));
+        clap->Deserialize(clapNode);
+        claps.emplace_back(clap);
+        clapNode = clapNode->next;
+    }
+    Sub::GetClassPtr()->GetField("claps").Set(this, claps);
+}
+
 MusicScore::~MusicScore()
 {
     for (auto& m_objectFactorie : m_subs) {
         delete m_objectFactorie;
     }
     m_subs.clear();
+}
+
+void *MusicScore::Serialize()
+{
+    return ReflectorObject::Serialize();
+}
+
+void MusicScore::Deserialize(void *source)
+{
+    auto node = static_cast<xmlNodePtr>(source);
+    auto subs = MusicScore::GetClassPtr()->GetField("subs").Get<std::vector<Sub*>>(this);
+    while (node != nullptr) {
+        std::string key = std::string(reinterpret_cast<const char*>(node->name));
+        if (key == "Sub") {
+            auto sub = GetNewInstance<Sub>(key);
+            sub->Deserialize(node);
+            subs.emplace_back(sub);
+        } else if (key == "beat") {
+            MusicScore::GetClassPtr()->GetField(key).Set(this, std::stoi(XmlReader::GetNodeContent(node)));
+        } else if (key == "rate") {
+            MusicScore::GetClassPtr()->GetField(key).Set(this, std::stof(XmlReader::GetNodeContent(node)));
+        } else {
+            MusicScore::GetClassPtr()->GetField(key).Set(this, XmlReader::GetNodeContent(node));
+        }
+        node = node->next;
+    }
+    MusicScore::GetClassPtr()->GetField("subs").Set(this, subs);
 }
 
 MusicScoreManager::~MusicScoreManager()
@@ -65,155 +201,25 @@ int MusicScoreManager::Paser()
 int MusicScoreManager::PaserMusicScore()
 {
     m_errCode = 0;
+    if(m_xmlDoc == nullptr) {
+        std::cerr << "Unknow where to parse the data from, please load the source data file" << std::endl;
+        return -1;
+    }
     m_musicScore = GetNewInstance<MusicScore>("MusicScore");
     if (m_musicScore == nullptr) {
         std::cerr << "PaserMusicScore can not get class[MusicScore]" << std::endl;
         return -1;
     }
 
-    MusicScore::GetClassPtr()->GetField("name").Set(m_musicScore, GetNodeContent(FindNode("//name")));
-    MusicScore::GetClassPtr()->GetField("key").Set(m_musicScore, GetNodeContent(FindNode("//key")));
-    MusicScore::GetClassPtr()->GetField("beat").Set(m_musicScore, std::stoi(GetNodeContent(FindNode("//beat"))));
-    MusicScore::GetClassPtr()->GetField("rate").Set(m_musicScore, std::stof(GetNodeContent(FindNode("//rate"))));
-
-    printf("<music>\n"
-           "    <name>%s</name>\n"
-           "    <key>%s</key>\n"
-           "    <beat>%d</beat>\n"
-           "    <rate>%f</rate>\n",
-           MusicScore::GetClassPtr()->GetField("name").Get<std::string>(m_musicScore).c_str(),
-           MusicScore::GetClassPtr()->GetField("key").Get<std::string>(m_musicScore).c_str(),
-           MusicScore::GetClassPtr()->GetField("beat").Get<int>(m_musicScore),
-           MusicScore::GetClassPtr()->GetField("rate").Get<float>(m_musicScore)
-           );
-
-    auto result = GetXmlXPathObjectPtr("//Sub");
-    if (result == nullptr || xmlXPathNodeSetIsEmpty(result->nodesetval)) {
-        std::cerr << "can not find xml element subNode \"Sub\"" << std::endl;
-        return -1;
-    }
-    auto subs = MusicScore::GetClassPtr()->GetField("subs").Get<std::vector<Sub*>>(m_musicScore);
-    for (int index = 0; index < result->nodesetval->nodeNr; ++index) {
-        auto subNode = result->nodesetval->nodeTab[index];
-        auto sub = PaserSub(subNode);
-        if (sub == nullptr) {
-            m_errCode = -1;
-            break;
-        }
-        subs.emplace_back(sub);
-    }
-    MusicScore::GetClassPtr()->GetField("subs").Set(m_musicScore, subs);
-    printf("</music>");
+    m_musicScore->Deserialize(Root()->children);
     return m_errCode;
 }
 
-
-Sub *MusicScoreManager::PaserSub(xmlNodePtr subNode)
+int MusicScoreManager::Serialize(const std::string &file, const MusicScore *musicScore)
 {
-    auto sub = GetNewInstance<Sub>(std::string(reinterpret_cast<const char*>(subNode->name)));
-    if (sub == nullptr) {
-        std::cerr << "PaserSub can not get class[" << subNode->name << "]" << std::endl;
-        m_errCode = -1;
-        return nullptr;
-    }
+    XmlWriter writer;
+    int ret = writer.CreateXmlDoc();
 
-    Sub::GetClassPtr()->GetField("number").Set(sub, std::stoi(GetNodeProp(subNode, "number")));
-    if (GetNodeProp(subNode, "repeat") == "true") {
-        Sub::GetClassPtr()->GetField("repeat").Set(sub, true);
-    } else {
-        Sub::GetClassPtr()->GetField("repeat").Set(sub, false);
-    }
-    printf("    <%s number=%d repeat=%d>\n", subNode->name,
-           Sub::GetClassPtr()->GetField("number").Get<int>(sub),
-           Sub::GetClassPtr()->GetField("repeat").Get<bool>(sub));
-    auto claps = Sub::GetClassPtr()->GetField("claps").Get<std::vector<Clap*>>(sub);
-    auto clapNode = subNode->children;
-    while (clapNode != nullptr) {
-        auto clap = PaserClap(clapNode);
-        if (clap == nullptr) {
-            m_errCode = -1;
-            break;
-        }
-        claps.emplace_back(clap);
-        clapNode = clapNode->next;
-    }
-    Sub::GetClassPtr()->GetField("claps").Set(sub, claps);
-    printf("    </%s>\n", subNode->name);
-    return sub;
-}
-
-Clap *MusicScoreManager::PaserClap(xmlNodePtr clapNode)
-{
-    auto clap = GetNewInstance<Clap>(std::string(reinterpret_cast<const char*>(clapNode->name)));
-    if (clap == nullptr) {
-        std::cerr << "PaserClap can not get class[" << clapNode->name << "]" << std::endl;
-        m_errCode = -1;
-        return nullptr;
-    }
-    printf("        <%s>\n", clapNode->name);
-    auto combos = Clap::GetClassPtr()->GetField("combos").Get<std::vector<Combo*>>(clap);
-    auto comboNode = clapNode->children;
-    while (comboNode != nullptr) {
-        auto combo = PaserCombo(comboNode);
-        if (combo == nullptr) {
-            m_errCode = -1;
-            break;
-        }
-        combos.emplace_back(combo);
-        comboNode = comboNode->next;
-    }
-    Combo::GetClassPtr()->GetField("notes").Set(clap, combos);
-    printf("        </%s>\n", clapNode->name);
-    return clap;
-}
-
-Combo *MusicScoreManager::PaserCombo(xmlNodePtr comboNode)
-{
-    auto combo = GetNewInstance<Combo>(std::string(reinterpret_cast<const char*>(comboNode->name)));
-    if (combo == nullptr) {
-        std::cerr << "PaserCombo can not get class[" << comboNode->name << "]" << std::endl;
-        m_errCode = -1;
-        return nullptr;
-    }
-    printf("            <%s>\n", comboNode->name);
-    auto notes = Combo::GetClassPtr()->GetField("notes").Get<std::vector<Note*>>(combo);
-    auto noteNode = comboNode->children;
-    while (noteNode != nullptr) {
-        auto note = PaserNote(noteNode);
-        if (note == nullptr) {
-            m_errCode = -1;
-            break;
-        }
-        notes.emplace_back(note);
-        noteNode = noteNode->next;
-    }
-    Combo::GetClassPtr()->GetField("notes").Set(combo, notes);
-    printf("            </%s>\n", comboNode->name);
-    return combo;
-}
-
-Note *MusicScoreManager::PaserNote(xmlNodePtr noteNode)
-{
-    auto note = GetNewInstance<Note>(std::string(reinterpret_cast<const char*>(noteNode->name)));
-    if (note == nullptr) {
-        std::cerr << "PaserNote can not get class[" << noteNode->name << "]" << std::endl;
-        m_errCode = -1;
-        return nullptr;
-    }
-
-    Note::GetClassPtr()->GetField("channel").Set(note, GetNodeProp(noteNode, "channel"));
-    Note::GetClassPtr()->GetField("rollcall").Set(note, Music::RollCall::FromString(GetNodeProp(noteNode, "rollcall")));
-    Note::GetClassPtr()->GetField("octive").Set(note, std::stoi(GetNodeProp(noteNode, "octive")));
-    Note::GetClassPtr()->GetField("musicalNote").Set(note, Music::MusicalNote::FromString(GetNodeProp(noteNode, "note")));
-    Note::GetClassPtr()->GetField("type").Set(note, Music::NoteType::FromString(GetNodeProp(noteNode, "type")));
-
-    printf("                <%s channel=%s rollCall=%s octive=%d note=%s type=%s/>\n",
-           noteNode->name,
-           Note::GetClassPtr()->GetField("channel").Get<std::string>(note).c_str(),
-           Music::RollCall::ToString(Note::GetClassPtr()->GetField("rollcall").Get<int>(note)).c_str(),
-           Note::GetClassPtr()->GetField("octive").Get<int>(note),
-           Music::MusicalNote::ToString(Note::GetClassPtr()->GetField("musicalNote").Get<int>(note)).c_str(),
-           Music::NoteType::ToString(Note::GetClassPtr()->GetField("type").Get<int>(note)).c_str()
-           );
-    return note;
+    ret |= writer.SaveXmlDoc(file);
+    return ret;
 }

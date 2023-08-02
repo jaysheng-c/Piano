@@ -25,6 +25,10 @@ FIELD_CLASS_REGISTER(Note)
     PRIVATE_FILED_RIGISTER(int, octive, Note)           // 八度
     PRIVATE_FILED_RIGISTER(int, musicalNote, Note)      // 音符
     PRIVATE_FILED_RIGISTER(int, type, Note)             // 类型（如：连音）
+
+public:
+    void *Serialize() override;
+    void Deserialize(void* source) override;
 };
 
 class Combo : public ReflectorObject {
@@ -33,6 +37,8 @@ FIELD_CLASS_REGISTER(Combo)
 
 public:
     ~Combo() override;
+    void *Serialize() override;
+    void Deserialize(void* source) override;
 };
 
 class Clap : public ReflectorObject {
@@ -41,6 +47,8 @@ FIELD_CLASS_REGISTER(Clap)
 
 public:
     ~Clap() override;
+    void *Serialize() override;
+    void Deserialize(void* source) override;
 };
 
 class Sub : public ReflectorObject {
@@ -51,6 +59,8 @@ FIELD_CLASS_REGISTER(Sub)
 
 public:
     ~Sub() override;
+    void *Serialize() override;
+    void Deserialize(void* source) override;
 };
 
 // 乐谱
@@ -64,6 +74,8 @@ FIELD_CLASS_REGISTER(MusicScore)
 
 public:
     ~MusicScore() override;
+    void *Serialize() override;
+    void Deserialize(void* source) override;
 
 };
 
@@ -71,13 +83,10 @@ class MusicScoreManager : public XmlReader {
 public:
     ~MusicScoreManager() override;
     int Paser();
+    int Serialize(const std::string &file, const MusicScore* musicScore);
 
 protected:
     int PaserMusicScore();
-    Sub *PaserSub(xmlNodePtr subNode);
-    Clap *PaserClap(xmlNodePtr clapNode);
-    Combo *PaserCombo(xmlNodePtr comboNode);
-    Note *PaserNote(xmlNodePtr noteNode);
 
 private:
     MusicScore *m_musicScore;

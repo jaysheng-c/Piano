@@ -30,16 +30,17 @@ public:
     std::string Prop(xmlNode* node, const std::string& name) const override { return GetNodeProp(node, name); }
 
     xmlNodePtr FindNode(const std::string& xpath);
+    static std::string GetNodeProp(xmlNodePtr node, const std::string& name);
+    static std::string GetNodeContent(xmlNodePtr node);
 
 protected:
     int OpenXmlDoc(const std::string& file, const std::string& encoding = "utf-8", int option = XML_PARSE_NOBLANKS);
     void CloseXml();
     xmlNodePtr GetXmlRoot() const;
-    static std::string GetNodeProp(xmlNodePtr node, const std::string& name);
-    static std::string GetNodeContent(xmlNodePtr node);
     xmlXPathObjectPtr GetXmlXPathObjectPtr(const std::string &xpath);
     static int Error();
-private:
+
+protected:
     xmlDocPtr m_xmlDoc;
 
 };

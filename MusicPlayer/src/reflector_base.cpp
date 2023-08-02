@@ -28,7 +28,7 @@ void Reflector::Register(const std::string &name, ObjectFactory *obj)
     if (it == m_objectFactories.end()) {
         m_objectFactories[name] = obj;
     } else {
-        std::cout << "class [" << name << "] is exits!" << std::endl;
+        std::cout << __FILE__ << ":" << __LINE__ << " " << "class [" << name << "] is exits!" << std::endl;
     }
 }
 
@@ -39,7 +39,7 @@ ReflectorObject *Reflector::GetNewInstance(const std::string &name)
         auto obj = it->second;
         return obj->newInstance();
     }
-    std::cout << "class [" << name << "] is not exits!" << std::endl;
+    std::cout << __FILE__ << ":" << __LINE__ << " " << "class [" << name << "] is not exits!" << std::endl;
     return nullptr;
 }
 
@@ -74,7 +74,7 @@ ReflectField ReflectFieldClass::GetField(const std::string &key)
 {
     auto it = m_fields.find(key);
     if (it == m_fields.cend()) {
-        std::cout << key << " is not exit.\n";
+        std::cout << __FILE__ << ":" << __LINE__ << " " << key << " is not exit.\n";
     }
     return it->second;
 }
